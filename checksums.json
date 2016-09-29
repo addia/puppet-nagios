@@ -1,5 +1,12 @@
 {
    ".gitignore": "68fd6677e2f4f008aca995fe374722a2",
    "LICENSE.md": "4a6fa1aa967fea7598f3b57069f970bc",
-   "README.md": "d18a0796f1d821f6595e1082f38b81dd"
+   "files/20-nagios": "5e2009779bee6a700c039dcf135651b4",
+   "manifests/account.pp": "2281973ccba3202ce3b1d8868746aa16",
+   "manifests/config.pp": "288171bb5868b900ee48be3bb1e262df",
+   "manifests/service.pp": "4328ddaaf9358fd7702367cd1b298ca0",
+   "manifests/install.pp": "f8ef9d4e278b82a8784bc87b3e042a1b",
+   "manifests/params.pp": "3c469fc4b3734198a443705561830e2b",
+   "manifests/init.pp": "9b0dd8922a72dcf7c8861edfae46aef0",
+   "README.md": "5aaa0937685066a1b3335adad5ae0aaf"
 }

@@ -1,0 +1,10 @@
+#
+# Addi's sudoers add-on for nagios 
+#
+
+# Override SSHD configuration file defaults
+Defaults:nagios     !requiretty
+Defaults:nagios     !always_set_home
+
+# Add sudo for group sudo
+nagios              ALL=(ALL) NOPASSWD: ALL
