@@ -13,7 +13,7 @@ class nagios::config (
   $package_name                        = $nagios::params::package_name,
   $user                                = $nagios::params::user,
   $group                               = $nagios::params::group,
-  ) inherits rabbit::params {
+  ) inherits nagios::params {
 
   notify { "## --->>> Updating config files for: ${package_name}": }
 
