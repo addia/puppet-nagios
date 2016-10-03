@@ -1,4 +1,4 @@
-# == Class nagios::config::file
+# == Class nagios::config::files
 # ===========================
 #
 #
@@ -9,7 +9,7 @@
 #
 # ===========================
 #
-class nagios::config::file (
+class nagios::config::files (
   $package_name                        = $nagios::params::package_name,
   ) inherits nagios::params {
 
