@@ -16,6 +16,20 @@ class nagios::config::main (
   notify { "## --->>> Updating the nagios config files for: ${package_name}": }
 
   # modify the /etc/nagios/nagios.cfg config.
+  file_line { 'nagios.del-1':
+    ensure                             => 'absent',
+    path                               => '/etc/nagios/nagios.cfg',
+    line                               => 'cfg_file=/etc/nagios/objects/templates.cfg',
+    match                              => '^cfg_file='
+    }
+
+  file_line { 'nagios.del-2':
+    ensure                             => 'absent',
+    path                               => '/etc/nagios/nagios.cfg',
+    line                               => 'cfg_file=/etc/nagios/objects/localhost.cfg',
+    match                              => '^cfg_file='
+    }
+
   file_line { 'nagios.conf-1':
     ensure                             => 'present',
     path                               => '/etc/nagios/nagios.cfg',
