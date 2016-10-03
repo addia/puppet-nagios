@@ -32,7 +32,7 @@ class nagios::config::files (
     ensure                             => 'absent',
     }
 
-  file { '/etc/nagios/objects/template.cfg':
+  file { '/etc/nagios/objects/templates.cfg':
     ensure                             => 'absent',
     }
 
