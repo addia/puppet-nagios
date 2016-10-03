@@ -3,7 +3,7 @@
    "LICENSE.md": "4a6fa1aa967fea7598f3b57069f970bc",
    "files/20-nagios": "5e2009779bee6a700c039dcf135651b4",
    "manifests/account.pp": "2281973ccba3202ce3b1d8868746aa16",
-   "manifests/config.pp": "a6bb4d5adba63f9b772c4fb28c9d0911",
+   "manifests/config.pp": "6dbd3f19b70089d518ccfd16a4bea632",
    "manifests/service.pp": "4328ddaaf9358fd7702367cd1b298ca0",
    "manifests/install.pp": "f8ef9d4e278b82a8784bc87b3e042a1b",
    "manifests/params.pp": "3c469fc4b3734198a443705561830e2b",

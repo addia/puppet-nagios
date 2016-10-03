@@ -177,12 +177,6 @@ class nagios::config (
     match                              => '^#service_perfdata_process_empty_results=1',
     }
 
-  # deploy the config files:
-  git::reposync { 'server_stuff':
-    source_url                         => 'http://192.168.249.38/webops/puppet-nagios.git',
-    destination_dir                    => '/etc/nagios/',
-    }
-
   # remove unwanted files ...
   file { '/etc/nagios/objects/printer.cfg':
     ensure                             => 'absent',
