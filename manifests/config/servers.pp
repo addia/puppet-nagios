@@ -67,7 +67,7 @@ class nagios::config::servers (
   nagios_host { 'generic-server':
     ensure                             => 'present',
     mode                               => '644',
-    target                             => "${server_dir}/host_generic.cfg",
+    target                             => "${servers_dir}/host_generic.cfg",
     notifications_enabled              => '1',
     event_handler_enabled              => '1',
     flap_detection_enabled             => '1',
