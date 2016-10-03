@@ -84,14 +84,13 @@ class nagios::config::main (
     path                               => '/etc/nagios/nagios.cfg',
     line                               => 'host_perfdata_file_template=[HOSTPERFDATA]\t$TIMET$\t$HOSTNAME$\t$HOSTEXECUTIONTIME$\t$HOSTOUTPUT$\t$HOSTPERFDATA$',
     match                              => '^#host_perfdata_file_template=',
-    # match                            => '^#host_perfdata_file_template=[HOSTPERFDATA]\t$TIMET$\t$HOSTNAME$\t$HOSTEXECUTIONTIME$\t$HOSTOUTPUT$\t$HOSTPERFDATA$',
     }
 
   file_line { 'nagios.conf-11':
     ensure                             => 'present',
     path                               => '/etc/nagios/nagios.cfg',
     line                               => 'service_perfdata_file_template=[SERVICEPERFDATA]\t$TIMET$\t$HOSTNAME$\t$SERVICEDESC$\t$SERVICEEXECUTIONTIME$\t$SERVICELATENCY$\t$SERVICEOUTPUT$\t$SERVICEPERFDATA$',
-    match                              => '^#service_perfdata_file_template=[SERVICEPERFDATA]\t$TIMET$\t$HOSTNAME$\t$SERVICEDESC$\t$SERVICEEXECUTIONTIME$\t$SERVICELATENCY$\t$SERVICEOUTPUT$\t$SERVICEPERFDATA$',
+    match                              => '^#service_perfdata_file_template=',
     }
 
   file_line { 'nagios.conf-12':

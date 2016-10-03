@@ -1,5 +1,5 @@
 #
-# Addi's sudoers add-on for nagios 
+# sudoers add-on for nagios 
 #
 
 # Override SSHD configuration file defaults

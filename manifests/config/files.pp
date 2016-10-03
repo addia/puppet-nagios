@@ -13,7 +13,7 @@ class nagios::config::files (
   $package_name                        = $nagios::params::package_name,
   ) inherits nagios::params {
 
-  notify { "## --->>> Removing some config files for: ${package_name}": }
+  notify { "## --->>> Removing unwanted config files for: ${package_name}": }
 
   # remove unwanted files ...
   file { '/etc/nagios/objects/printer.cfg':
@@ -25,6 +25,14 @@ class nagios::config::files (
     }
 
   file { '/etc/nagios/objects/windows.cfg':
+    ensure                             => 'absent',
+    }
+
+  file { '/etc/nagios/objects/localhost.cfg':
+    ensure                             => 'absent',
+    }
+
+  file { '/etc/nagios/objects/template.cfg':
     ensure                             => 'absent',
     }
 

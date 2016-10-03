@@ -17,6 +17,10 @@ class nagios::params {
   $uid                                 = '240'
   $guid                                = '240'
   $home_dir                            = '/var/spool/nagios'
+  $base_dir                            = '/etc/nagios/objects'
+  $commands_dir                        = '/etc/nagios/objects/commands'
+  $servers_dir                         = '/etc/nagios/objects/servers'
+  $services_dir                        = '/etc/nagios/objects/services'
 
   }
 
