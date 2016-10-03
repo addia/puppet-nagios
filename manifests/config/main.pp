@@ -24,17 +24,17 @@ class nagios::config::main (
     }
 
   file_line { 'nagios.conf-2':
-    ensure                             => 'after',
+    ensure                             => 'present',
     path                               => '/etc/nagios/nagios.cfg',
     line                               => 'cfg_dir=/etc/nagios/objects/servers',
-    match                              => '^#cfg_dir=/etc/nagios/routers',
+    after                              => '^#cfg_dir=/etc/nagios/routers',
     }
 
   file_line { 'nagios.conf-3':
-    ensure                             => 'after',
+    ensure                             => 'present',
     path                               => '/etc/nagios/nagios.cfg',
     line                               => 'cfg_dir=/etc/nagios/objects/services',
-    match                              => '^#cfg_dir=/etc/nagios/routers',
+    after                              => '^#cfg_dir=/etc/nagios/routers',
     }
 
   file_line { 'nagios.conf-4':
