@@ -20,15 +20,26 @@ class nagios::config::contacts (
   nagios_contact { 'nagiosadmin':
     ensure                             => 'present',
     target                             => "${base_dir}/contacts.cfg",
+    contact_name                       => 'nagiosadmin',
 	  alias                              => 'WebOps Team',
     email                              => 'nagios@localhost',
     use                                => 'generic-contact'
+    }
+
+  # add the nagios contactgroup:
+  nagios_contactgroup { 'admins':
+    ensure                             => 'present',
+    target                             => "${base_dir}/contacts.cfg",
+    contactgroup_name                  => 'admins',
+    alias                              => 'Nagios Administrators',
+    contactgroup_members               => 'nagiosadmin'
     }
 
   # add the contact template:
   nagios_contact { 'generic-contact':
     ensure                             => 'present',
     target                             => "${base_dir}/contacts.cfg",
+    contact_name                       => 'generic-contact',
     host_notifications_enabled         => '1',
     service_notifications_enabled      => '1',
     can_submit_commands                => '1',
