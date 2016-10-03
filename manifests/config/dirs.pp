@@ -13,7 +13,7 @@ class nagios::config::dirs (
   $package_name                        = $nagios::params::package_name,
   ) inherits nagios::params {
 
-  notify { "## --->>> Updating config files for: ${package_name}": }
+  notify { "## --->>> Adding config dirs for: ${package_name}": }
 
   # manage object directories
   file { '/etc/nagios/objects/commands':

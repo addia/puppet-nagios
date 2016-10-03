@@ -13,7 +13,7 @@ class nagios::config::files (
   $package_name                        = $nagios::params::package_name,
   ) inherits nagios::params {
 
-  notify { "## --->>> Updating config files for: ${package_name}": }
+  notify { "## --->>> Removing some config files for: ${package_name}": }
 
   # remove unwanted files ...
   file { '/etc/nagios/objects/printer.cfg':
