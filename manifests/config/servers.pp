@@ -19,6 +19,7 @@ class nagios::config::servers (
   # manage the nagios monitoring hostgroups
   nagios_hostgroup { 'all-servers':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${servers_dir}/host_groups.cfg",
     hostgroup_members                  => 'linux-servers, linux-virtual-servers, web-servers',
     alias                              => 'All Servers'
@@ -26,18 +27,21 @@ class nagios::config::servers (
 
   nagios_hostgroup { 'linux-servers':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${servers_dir}/host_groups.cfg",
     alias                              => 'Linux Servers'
     }
 
   nagios_hostgroup { 'linux-virtual-servers':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${servers_dir}/host_groups.cfg",
     alias                              => 'Linux Virtual Servers'
     }
 
   nagios_hostgroup { 'web-servers':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${servers_dir}/host_groups.cfg",
     alias                              => 'Web Servers'
     }
@@ -45,6 +49,7 @@ class nagios::config::servers (
   # manage the nagios monitoring hosts
   nagios_host { 'host_centos':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${servers_dir}/host_centos.cfg",
     alias                              => 'centos7.abel.uk.com',
     display_name                       => 'Addis CentOS7',
@@ -61,6 +66,7 @@ class nagios::config::servers (
   # server templates
   nagios_host { 'generic-server':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${server_dir}/host_generic.cfg",
     notifications_enabled              => '1',
     event_handler_enabled              => '1',
@@ -82,6 +88,7 @@ class nagios::config::servers (
 
   nagios_host { 'generic-graph':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${server_dir}/host_generic.cfg",
     action_url                         => '/pnp4nagios/index.php/graph?host=$HOSTNAME$&srv=_HOST_',
     register                           => '0'

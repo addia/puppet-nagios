@@ -17,18 +17,21 @@ class nagios::config::dirs (
 
   # manage object directories
   file { '/etc/nagios/objects/commands':
+    mode                               => '755',
     ensure                             => 'directory',
     }
 
   file { '/etc/nagios/objects/servers':
+    mode                               => '755',
     ensure                             => 'directory',
     }
 
   file { '/etc/nagios/objects/services':
+    mode                               => '755',
     ensure                             => 'directory',
     }
 
   }
 
 
-# via: set ts=2 sw=2 et :
+# vim: set ts=2 sw=2 et :

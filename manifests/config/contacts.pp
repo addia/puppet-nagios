@@ -20,6 +20,7 @@ class nagios::config::contacts (
   nagios_contact { 'nagiosadmin':
     ensure                             => 'present',
     target                             => "${base_dir}/contacts.cfg",
+    mode                               => '644',
     contact_name                       => 'nagiosadmin',
 	  alias                              => 'WebOps Team',
     email                              => 'nagios@localhost',
@@ -29,6 +30,7 @@ class nagios::config::contacts (
   # add the nagios contactgroup:
   nagios_contactgroup { 'admins':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${base_dir}/contacts.cfg",
     contactgroup_name                  => 'admins',
     alias                              => 'Nagios Administrators',
@@ -38,6 +40,7 @@ class nagios::config::contacts (
   # add the contact template:
   nagios_contact { 'generic-contact':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${base_dir}/contacts.cfg",
     contact_name                       => 'generic-contact',
     host_notifications_enabled         => '1',

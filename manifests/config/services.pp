@@ -19,6 +19,7 @@ class nagios::config::services (
   # manage the nagios monitoring servicegroups
   nagios_servicegroup { 'all-services':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${services_dir}/service_groups.cfg",
     servicegroup_members               => 'production-service, database-service, web-service',
     alias                              => 'All Services',
@@ -26,18 +27,21 @@ class nagios::config::services (
 
   nagios_servicegroup { 'production-service':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${services_dir}/service_groups.cfg",
     alias                              => 'Production Services',
     }
 
   nagios_servicegroup { 'database-service':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${services_dir}/service_groups.cfg",
     alias                              => 'Database Services',
     }
 
   nagios_servicegroup { 'web-service':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${services_dir}/service_groups.cfg",
     alias                              => 'Web Services',
     }
@@ -45,6 +49,7 @@ class nagios::config::services (
   # manage the nagios monitoring services
   nagios_service { 'service-cpu':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${services_dir}/service_cpu.cfg",
     service_description                => 'Server CPU',
     use                                => 'generic-service,service-graph',
@@ -56,6 +61,7 @@ class nagios::config::services (
   # service templates
   nagios_service { 'generic-service':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${services_dir}/service_generic.cfg",
     active_checks_enabled              => '1',
     passive_checks_enabled             => '1',
@@ -82,6 +88,7 @@ class nagios::config::services (
 
   nagios_service{ 'service-graph':
     ensure                             => 'present',
+    mode                               => '644',
     target                             => "${services_dir}/service_generic.cfg",
     action_url                         => '/pnp4nagios/index.php/graph?host=$HOSTNAME$&srv=$SERVICEDESC$',
     register                           => '0'
