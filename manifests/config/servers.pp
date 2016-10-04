@@ -56,7 +56,7 @@ class nagios::config::servers (
     address                            => '192.168.122.10',
     use                                => 'generic-server,server-graph',
     hostgroups                         => 'linux-servers, linux-virtual-servers',
-    contact_groups                     => 'webops',
+    contact_groups                     => 'admins',
     notification_period                => '24x7',
     icon_image_alt                     => 'Linux',
     statusmap_image                    => 'vendor-logos/linux.jpg',
