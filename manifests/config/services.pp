@@ -58,6 +58,138 @@ class nagios::config::services (
     check_command                      => 'check_cpu',
     }
 
+  nagios_service { 'service-disk_boot':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_disk.cfg",
+    service_description                => 'Server Disk /boot',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_disk!/boot',
+    }
+
+  nagios_service { 'service-disk_root':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_disk.cfg",
+    service_description                => 'Server Disk /',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_disk!/',
+    }
+
+  nagios_service { 'service-load':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_load.cfg",
+    service_description                => 'Server Load',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_load!15,12,10!30,25,20',
+    }
+
+  nagios_service { 'service-memory':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_memory.cfg",
+    service_description                => 'Server Memory',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_memory',
+    }
+
+  nagios_service { 'service-net_eth0':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_net.cfg",
+    service_description                => 'Server NetStat eth0 /',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_net_stat!eth0',
+    }
+
+  nagios_service { 'service-ping':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_ping.cfg",
+    service_description                => 'Server Ping',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_ping!100.0,20%!500.0,60%',
+    }
+
+  nagios_service { 'service-proc_total':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_procs.cfg",
+    service_description                => 'Server Processes Total',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_total_procs!800!1100',
+    }
+
+  nagios_service { 'service-procs_dead':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_procs.cfg",
+    service_description                => 'Server Processes Dead',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_zombie_procs!3!10',
+    }
+
+  nagios_service { 'service-ssh':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_ssh.cfg",
+    service_description                => 'Server SSH',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_ssh',
+    }
+
+  nagios_service { 'service-swap':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_swap.cfg",
+    service_description                => 'Server Swap Usage',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_swap',
+    }
+
+  nagios_service { 'service-uptime':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_uptime.cfg",
+    service_description                => 'Server Uptime',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_uptime',
+    }
+
+  nagios_service { 'service-users':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${services_dir}/service_users.cfg",
+    service_description                => 'Server Users',
+    use                                => 'generic-service,service-graph',
+    hostgroup_name                     => 'linux-servers',
+    servicegroups                      => 'all-services',
+    check_command                      => 'check_users',
+    }
+
   # service templates
   nagios_service { 'generic-service':
     ensure                             => 'present',
