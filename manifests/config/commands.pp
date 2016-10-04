@@ -101,6 +101,13 @@ class nagios::config::commands (
     command_line                       => '$USER1$/check_nrpe -H \'$HOSTADDRESS$\' -c check_users -a \'$ARG1$\''
     }
 
+  nagios_command { 'check_ssh':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${commands_dir}/check_ssh.cfg",
+    command_line                       => '$USER1$/check_ssh \'$ARG1$\' \'$HOSTADDRESS$\''
+    }
+
   }
 
 
