@@ -23,7 +23,7 @@ class nagios::config::contacts (
     mode                               => '644',
     contact_name                       => 'nagiosadmin',
 	  alias                              => 'WebOps Team',
-    email                              => 'nagios@localhost',
+    email                              => 'addi.abel@digital.landregistry.gov.uk',
     use                                => 'generic-contact'
     }
 
