@@ -78,7 +78,7 @@ class nagios::config::servers (
     check_interval                     => '5',
     retry_interval                     => '1',
     max_check_attempts                 => '10',
-    check_command                      => 'check-host-alive',
+    check_command                      => 'check_host_alive',
     notification_period                => '24x7',
     notification_interval              => '120',
     notification_options               => 'd,u,r,f,s',
