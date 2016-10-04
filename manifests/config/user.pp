@@ -16,12 +16,12 @@ class nagios::config::user (
 
   # add the users to the /etc/nagios/passwd file
   htpasswd { 'nagiosadmin':
-    cryptpasswd                        => '$apr1$6JKsZ.Ft$bVDJbTOCqakLOfh5azDAq.',
+    cryptpasswd                        => '$apr1$skoK/jJV$fgublQ4T974WSEjsnEWVc/',
 	target                             => '/etc/nagios/passwd',
     }
 
-  htpasswd { 'nagiosviewer':
-    cryptpasswd                        => '$apr1$MUBH5EW.$m7JlU81PTUMrjsrCDiS7J1',
+  htpasswd { 'nagiosview':
+    cryptpasswd                        => '$apr1$C4DbIUV1$j0acdXvtiQjOyKvHYI1gl.',
 	target                             => '/etc/nagios/passwd',
     }
 
