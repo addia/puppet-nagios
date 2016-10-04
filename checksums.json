@@ -15,7 +15,7 @@
    "manifests/config/files.pp": "571af39fd0fa2f27188f230c6fd0fa79",
    "manifests/config/main.pp": "5f073303f4db44409a230c011515d918",
    "manifests/config/services.pp": "6eb044e8cd9047998703922516b5a8b7",
-   "manifests/config/servers.pp": "0ea3ba01a146c41e64f8a88af65aae57",
+   "manifests/config/servers.pp": "0a57fb0a85e9ec2e2d7b57b62d573618",
    "manifests/install.pp": "f8ef9d4e278b82a8784bc87b3e042a1b",
    "manifests/params.pp": "c1dc52cfb0aa4dd3ae740c4713f5707f",
    "manifests/init.pp": "10cc48c0823be0e9388189d6206c2b7b",

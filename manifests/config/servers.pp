@@ -86,7 +86,7 @@ class nagios::config::servers (
     register                           => '0'
     }
 
-  nagios_host { 'generic-graph':
+  nagios_host { 'server-graph':
     ensure                             => 'present',
     mode                               => '644',
     target                             => "${server_dir}/host_generic.cfg",
