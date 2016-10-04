@@ -89,7 +89,7 @@ class nagios::config::servers (
   nagios_host { 'server-graph':
     ensure                             => 'present',
     mode                               => '644',
-    target                             => "${server_dir}/host_generic.cfg",
+    target                             => "${servers_dir}/host_generic.cfg",
     action_url                         => '/pnp4nagios/index.php/graph?host=$HOSTNAME$&srv=_HOST_',
     register                           => '0'
     }
