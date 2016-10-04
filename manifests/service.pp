@@ -30,6 +30,11 @@ class nagios::service (
     enable                             => true,
     }
 
+  service { 'npcd':
+    ensure                             => running,
+    enable                             => true,
+    }
+
 
   }
 
