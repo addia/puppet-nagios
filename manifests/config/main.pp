@@ -68,14 +68,14 @@ class nagios::config::main (
   file_line { 'nagios.conf-6':
     ensure                             => 'present',
     path                               => '/etc/nagios/nagios.cfg',
-    line                               => 'host_perfdata_command=process-host-perfdata',
+    line                               => '#host_perfdata_command=process-host-perfdata',
     match                              => '^#host_perfdata_command=process-host-perfdata',
     }
 
   file_line { 'nagios.conf-7':
     ensure                             => 'present',
     path                               => '/etc/nagios/nagios.cfg',
-    line                               => 'service_perfdata_command=process-service-perfdata',
+    line                               => '#service_perfdata_command=process-service-perfdata',
     match                              => '^#service_perfdata_command=process-service-perfdata',
     }
 
