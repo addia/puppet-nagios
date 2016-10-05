@@ -52,7 +52,7 @@ class nagios (
     notify { "## --->>> Installing and configuring ${package_name}": }
 
     anchor { 'nagios::begin': } ->
-    class { '::nagios::account': } ->
+    #class { '::nagios::account': } ->
     class { '::nagios::install': } ->
     class { '::nagios::config': } ->
     class { '::nagios::service': } ->
