@@ -33,6 +33,7 @@ class nagios::config (
     owner                              => 'root',
     group                              => 'root',
     mode                               => '0644',
+    replace                            => true,
     source                             => "puppet:///modules/nagios/commands.cfg"
     }
 
@@ -42,6 +43,7 @@ class nagios::config (
     owner                              => 'root',
     group                              => 'root',
     mode                               => '0644',
+    replace                            => true,
     source                             => "puppet:///modules/nagios/timeperiods.cfg"
     }
 
