@@ -52,7 +52,7 @@ class nagios (
 
   ) inherits nagios::params {
 
-    notify { "## --->>> Installing and configuring ${package_name}": }
+    notify { "## --->>> Install and configur ${package_name} server": }
 
     anchor { 'nagios::begin': } ->
     class { '::nagios::install': } ->
