@@ -13,7 +13,8 @@
 #     package_name                     = the package name
 #     user                             = run as user
 #     group                            = run as group
-#     uid                              = default uid/gid
+#     userid                           = default uid
+#     grpuid                           = default gid
 #     home_dir                         = nagios home directory
 #     base_dir                         = nagios base config directory
 #     config_dir                       = nagios config config directory
@@ -40,7 +41,8 @@ class nagios (
   $package_name                        = $nagios::params::package_name,
   $user                                = $nagios::params::user,
   $group                               = $nagios::params::group,
-  $uid                                 = $nagios::params::uid,
+  $userid                              = $nagios::params::userid,
+  $grpuid                              = $nagios::params::grpuid,
   $home_dir                            = $nagios::params::home_dir,
   $base_dir                            = $nagios::params::base_dir,
   $config_dir                          = $nagios::params::config_dir,
@@ -53,7 +55,6 @@ class nagios (
     notify { "## --->>> Installing and configuring ${package_name}": }
 
     anchor { 'nagios::begin': } ->
-    #class { '::nagios::account': } ->
     class { '::nagios::install': } ->
     class { '::nagios::config': } ->
     class { '::nagios::service': } ->
