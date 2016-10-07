@@ -2,12 +2,12 @@
    ".gitignore": "68fd6677e2f4f008aca995fe374722a2",
    "LICENSE.md": "4a6fa1aa967fea7598f3b57069f970bc",
    "files/20-nagios": "af541390b48a04c9eba1a1b6337b90cf",
-   "files/nrpe.cfg": "563a2e90408f2d2723b33b94962c9531",
    "files/timeperiods.cfg": "b09cf0a691d53646eb1ff0a52f0322f4",
    "files/commands.cfg": "5897b6a90acdb221321c0a30ceb280e7",
    "manifests/account.pp": "2281973ccba3202ce3b1d8868746aa16",
    "manifests/service.pp": "80ef1c8121373ea7260401c4851c429c",
    "manifests/config.pp": "b9c7468938acccb00328cba3687ec13f",
+   "manifests/init.pp": "367bc5e6afb7225d73067a57e9a13276",
    "manifests/config/cgi.pp": "0a95f27809eacfbb6807d58952dbe6bd",
    "manifests/config/dirs.pp": "a2d33262811b80a8bbeadb95940feed2",
    "manifests/config/files.pp": "571af39fd0fa2f27188f230c6fd0fa79",
@@ -18,7 +18,6 @@
    "manifests/config/contacts.pp": "8b8be0172fa6618b684638194b3fc5fa",
    "manifests/config/main.pp": "0d29f74833c9bab8b0af66ddac280f41",
    "manifests/install.pp": "f8ef9d4e278b82a8784bc87b3e042a1b",
-   "manifests/params.pp": "c1dc52cfb0aa4dd3ae740c4713f5707f",
-   "manifests/init.pp": "bba4ba8678c7e827fbf868a807a24a5d",
+   "manifests/params.pp": "1e5ab9126f69c6dd06f62440ed3aa2d3",
    "README.md": "5aaa0937685066a1b3335adad5ae0aaf"
 }
