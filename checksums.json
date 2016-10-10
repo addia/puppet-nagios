@@ -18,6 +18,6 @@
    "manifests/config/contacts.pp": "8b8be0172fa6618b684638194b3fc5fa",
    "manifests/config/main.pp": "0d29f74833c9bab8b0af66ddac280f41",
    "manifests/params.pp": "1e5ab9126f69c6dd06f62440ed3aa2d3",
-   "tests/init.pp": "21efd30af441eb4a3bffb9aab0ae2900",
+   "tests/init.pp": "2d04b90bd861042c7118f659ed064105",
    "README.md": "5aaa0937685066a1b3335adad5ae0aaf"
 }
