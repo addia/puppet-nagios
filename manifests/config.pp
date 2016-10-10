@@ -21,12 +21,6 @@ class nagios::config (
 
   notify { "## --->>> This is the complete config for: ${package_name}": }
 
-  exec { "fix_the_hostname_pants":
-    command                            => "cat /etc/hosts | tr [:upper:] [:lower:] > /tmp/hh; mv -f /tmp/hh /etc/hosts",
-    onlyif                             => "grep -v '^#' /etc/hosts | grep -q -e '[[:upper:]]'",
-    path                               => "/sbin:/bin:/usr/sbin:/usr/bin",
-    }
-
   # put the commands for email and graphing in place
   file { "${base_dir}/commands.cfg":
     ensure                             => file,

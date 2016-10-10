@@ -5,7 +5,7 @@
    "files/timeperiods.cfg": "b09cf0a691d53646eb1ff0a52f0322f4",
    "files/commands.cfg": "5897b6a90acdb221321c0a30ceb280e7",
    "manifests/service.pp": "80ef1c8121373ea7260401c4851c429c",
-   "manifests/config.pp": "b9c7468938acccb00328cba3687ec13f",
+   "manifests/config.pp": "953e44dd964b8850d0de821e58d76db6",
    "manifests/init.pp": "4618fb85677dbc3a41d27cc9e1f1a668",
    "manifests/install.pp": "f8ef9d4e278b82a8784bc87b3e042a1b",
    "manifests/config/cgi.pp": "0a95f27809eacfbb6807d58952dbe6bd",
