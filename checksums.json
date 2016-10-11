@@ -19,5 +19,7 @@
    "manifests/config/main.pp": "0d29f74833c9bab8b0af66ddac280f41",
    "manifests/params.pp": "1e5ab9126f69c6dd06f62440ed3aa2d3",
    "tests/init.pp": "2d04b90bd861042c7118f659ed064105",
-   "README.md": "5aaa0937685066a1b3335adad5ae0aaf"
+   "README.md": "5aaa0937685066a1b3335adad5ae0aaf",
+   "Rakefile": "3044cde52b8cd8508c8400076a66ef11",
+   "metadata.json": "b73216c31d0f05104d64b5dd6a2838c9"
 }
