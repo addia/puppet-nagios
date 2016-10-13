@@ -14,15 +14,16 @@ class nagios::params {
   $package_name                        = 'nagios'
   $user                                = 'nagios'
   $group                               = 'nagios'
-  $uid                                 = '240'
-  $guid                                = '240'
+  $userid                              = '240'
+  $grpuid                              = '240'
   $home_dir                            = '/var/spool/nagios'
-  $config_dir                          = '/etc/nagios'
   $base_dir                            = '/etc/nagios/objects'
+  $config_dir                          = '/etc/nagios'
   $commands_dir                        = '/etc/nagios/objects/commands'
   $servers_dir                         = '/etc/nagios/objects/servers'
   $services_dir                        = '/etc/nagios/objects/services'
-
+  $nagios_server                       = hiera('nagios_server_name')
+  $nagios_server_ip                    = hiera('nagios_server_ip')
   }
 
 

@@ -21,6 +21,8 @@
 #     commands_dir                     = the commands directory
 #     servers_dir                      = the servers directory
 #     services_dir                     = the services directory
+#     nagios_server                    = the server url
+#     nagios_server_ip                 = the server ip
 #
 # ===========================
 #
@@ -48,7 +50,9 @@ class nagios (
   $config_dir                          = $nagios::params::config_dir,
   $commands_dir                        = $nagios::params::commands_dir,
   $servers_dir                         = $nagios::params::servers_dir,
-  $services_dir                        = $nagios::params::services_dir
+  $services_dir                        = $nagios::params::services_dir,
+  $nagios_server                       = $nagios::params::nagios_server,
+  $nagios_server_ip                    = $nagios::params::nagios_server_ip
 
   ) inherits nagios::params {
 

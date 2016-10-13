@@ -9,9 +9,7 @@
 #
 # ===========================
 #
-class nagios::install (
-  $package_name                        = $nagios::params::package_name
-  ) inherits nagios::params {
+class nagios::install {
 
   notify { "## --->>> Installing server package: ${package_name}": }
 

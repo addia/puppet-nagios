@@ -44,6 +44,9 @@ class nagios::config (
   # add the users to the /etc/nagios/passwd file
   include nagios::config::user
 
+  # add configuration directories.
+  include nagios::config::dirs
+
   # modify the /etc/nagios/cgi.cfg config.
   include nagios::config::cgi
 
@@ -52,9 +55,6 @@ class nagios::config (
 
   # remove redundant files.
   include nagios::config::files
-
-  # add configuration directories.
-  include nagios::config::dirs
 
   # add commands configuration.
   include nagios::config::commands
