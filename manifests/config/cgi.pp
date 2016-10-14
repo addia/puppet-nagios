@@ -9,12 +9,9 @@
 #
 # ===========================
 #
-class nagios::config::cgi (
-  $package_name                        = $nagios::params::package_name,
-  ) inherits nagios::params {
+class nagios::config::cgi {
 
   notify { "## --->>> Updating the cgi config files for: ${package_name}": }
-
 
   # add another user to the /etc/nagios/cgi.cfg config.
   file_line { 'cgi.conf-1':

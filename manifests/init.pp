@@ -17,6 +17,7 @@
 #     grpuid                           = default gid
 #     home_dir                         = nagios home directory
 #     base_dir                         = nagios base config directory
+#     private_dir                      = nagios privileges direcory
 #     config_dir                       = nagios config config directory
 #     commands_dir                     = the commands directory
 #     servers_dir                      = the servers directory
@@ -47,6 +48,7 @@ class nagios (
   $grpuid                              = $nagios::params::grpuid,
   $home_dir                            = $nagios::params::home_dir,
   $base_dir                            = $nagios::params::base_dir,
+  $private_dir                         = $nagios::params::private_dir,
   $config_dir                          = $nagios::params::config_dir,
   $commands_dir                        = $nagios::params::commands_dir,
   $servers_dir                         = $nagios::params::servers_dir,

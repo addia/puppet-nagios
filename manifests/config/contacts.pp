@@ -9,10 +9,7 @@
 #
 # ===========================
 #
-class nagios::config::contacts (
-  $package_name                        = $nagios::params::package_name,
-  $base_dir                            = $nagios::params::base_dir,
-  ) inherits nagios::params {
+class nagios::config::contacts {
 
   notify { "## --->>> Adding manitoring contacts for: ${package_name}": }
 

@@ -9,9 +9,7 @@
 #
 # ===========================
 #
-class nagios::config::files (
-  $package_name                        = $nagios::params::package_name,
-  ) inherits nagios::params {
+class nagios::config::files {
 
   notify { "## --->>> Removing unwanted config files for: ${package_name}": }
 

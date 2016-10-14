@@ -7,9 +7,7 @@
 #
 # ===========================
 #
-class nagios::config::user (
-  $package_name                        = $nagios::params::package_name,
-  ) inherits nagios::params {
+class nagios::config::user {
 
   notify { "## --->>> Updating the user config files for: ${package_name}": }
 

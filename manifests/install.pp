@@ -18,6 +18,38 @@ class nagios::install {
     ensure                             => 'latest',
     }
 
+  class create_standard_directories {
+
+    File {
+      ensure                           => 'present',
+      owner                            => 'root',
+      group                            => 'root',
+      mode                             => '0755',
+      }
+
+    # create the object directories
+    file { $base_dir:
+      ensure                           => directory,
+      }
+
+    file { $private_dir:
+      ensure                           => directory,
+      }
+
+    file { $commands_dir:
+      ensure                           => directory,
+      }
+
+    file { $servers_dir:
+      ensure                           => directory,
+      }
+
+    file { $services_dir:
+      ensure                           => directory,
+      }
+
+    }
+
   }
 
 

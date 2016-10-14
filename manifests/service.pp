@@ -9,9 +9,7 @@
 #
 # ===========================
 #
-class nagios::service (
-  $package_name                        = $nagios::params::package_name
-  ) inherits nagios::params {
+class nagios::service {
   
   notify { "## --->>> Configuring service for: ${package_name}": } ~>
 

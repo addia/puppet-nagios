@@ -9,9 +9,7 @@
 #
 # ===========================
 #
-class nagios::config::main (
-  $package_name                        = $nagios::params::package_name,
-  ) inherits nagios::params {
+class nagios::config::main {
 
   notify { "## --->>> Updating the nagios config files for: ${package_name}": }
 
@@ -161,6 +159,13 @@ class nagios::config::main (
     path                               => '/etc/nagios/nagios.cfg',
     line                               => 'service_perfdata_process_empty_results=1',
     match                              => '^#service_perfdata_process_empty_results=1',
+    }
+
+  file_line { 'nagios.conf-20':
+    ensure                             => 'present',
+    path                               => '/etc/nagios/nagios.cfg',
+    line                               => 'resource_file=/etc/nagios/private/resource.cfg',
+    match                              => '^resource_file=/etc/nagios/resource.cfg',
     }
 
   }

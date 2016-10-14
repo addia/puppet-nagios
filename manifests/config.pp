@@ -9,43 +9,52 @@
 #
 # ===========================
 #
-class nagios::config (
-  $package_name                        = $nagios::params::package_name,
-  $user                                = $nagios::params::user,
-  $group                               = $nagios::params::group,
-  $base_dir                            = $nagios::params::base_dir,
-  $commands_dir                        = $nagios::params::commands_dir,
-  $servers_dir                         = $nagios::params::servers_dir,
-  $services_dir                        = $nagios::params::services_dir
-  ) inherits nagios::params {
+class nagios::config {
 
   notify { "## --->>> This is the complete config for: ${package_name}": }
 
-  # put the commands for email and graphing in place
-  file { "${base_dir}/commands.cfg":
-    ensure                             => file,
-    owner                              => 'root',
-    group                              => 'root',
-    mode                               => '0644',
-    replace                            => true,
-    source                             => "puppet:///modules/nagios/commands.cfg"
+  class create_standard_file {
+
+    File {
+      ensure                           => 'present',
+      owner                            => 'root',
+      group                            => 'root',
+      mode                             => '0644',
+      replace                          => true,
+      }
+
+    # put the commands for notification and graphing in place
+    file { "${base_dir}/commands.cfg":
+      source                           => "puppet:///modules/nagios/commands.cfg"
+      }
+
+    # put to the timeperiods for alerting in place
+    file { "${base_dir}/timeperiods.cfg":
+      source                           => "puppet:///modules/nagios/timeperiods.cfg"
+      }
     }
 
-  # put to the timeperiods for alerting in place
-  file { "${base_dir}/timeperiods.cfg":
-    ensure                             => file,
-    owner                              => 'root',
-    group                              => 'root',
-    mode                               => '0644',
-    replace                            => true,
-    source                             => "puppet:///modules/nagios/timeperiods.cfg"
+
+  exec { 'manage_config_files' :
+    command                            => "cd ${config_dir}; mv cgi.cfg.sample cgi.cfg; mv nagios.cfg.sample nagios.cfg",
+    creates                            => "${config_dir}/nagios.cfg",
+    path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
+    }
+
+  exec { 'backup_config_files' :
+    command                            => "cd ${config_dir}; cp -p cgi.cfg cgi.cfg.bak; cp -p nagios.cfg nagios.cfg.bak",
+    creates                            => "${config_dir}/nagios.cfg.bak",
+    path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
+    }
+
+  exec { 'manage_private_config' :
+    command                            => "cd ${config_dir}; mv resource.cfg.sample ${private_dir}/resource.cfg",
+    creates                            => "${private_dir}/resource.cfg",
+    path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
     }
 
   # add the users to the /etc/nagios/passwd file
   include nagios::config::user
-
-  # add configuration directories.
-  include nagios::config::dirs
 
   # modify the /etc/nagios/cgi.cfg config.
   include nagios::config::cgi

@@ -18,6 +18,7 @@ class nagios::params {
   $grpuid                              = '240'
   $home_dir                            = '/var/spool/nagios'
   $base_dir                            = '/etc/nagios/objects'
+  $private_dir                         = '/etc/nagios'
   $config_dir                          = '/etc/nagios'
   $commands_dir                        = '/etc/nagios/objects/commands'
   $servers_dir                         = '/etc/nagios/objects/servers'
