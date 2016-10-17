@@ -11,7 +11,7 @@
 #
 class nagios::config {
 
-  notify { "## --->>> This is the complete config for: ${package_name}": }
+  notify { "## --->>> This module prepares the ${config_dir} for: ${package_name}": }
 
   class create_standard_file {
 
@@ -36,7 +36,8 @@ class nagios::config {
 
 
   exec { 'manage_config_files' :
-    command                            => "mv ${config_dir}/cgi.cfg.sample ${config_dir}/cgi.cfg; mv ${config_dir}/nagios.cfg.sample ${config_dir}/nagios.cfg",
+    command                            => "mv cgi.cfg.sample cgi.cfg; mv nagios.cfg.sample nagios.cfg",
+    cwd                                => "${config_dir}",
     creates                            => "${config_dir}/nagios.cfg",
     path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
     }
