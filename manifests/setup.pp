@@ -1,4 +1,4 @@
-# == Class nagios::config::main
+# == Class nagios::setup
 # ===========================
 #
 #
@@ -9,7 +9,7 @@
 #
 # ===========================
 #
-class nagios::config::main {
+class nagios::setup {
 
   notify { "## --->>> Updating the nagios config files for: ${package_name}": }
 
@@ -166,6 +166,23 @@ class nagios::config::main {
     path                               => '/etc/nagios/nagios.cfg',
     line                               => 'resource_file=/etc/nagios/private/resource.cfg',
     match                              => '^resource_file=/etc/nagios/resource.cfg',
+    }
+
+  notify { "## --->>> Updating the cgi config files for: ${package_name}": }
+
+  # add another user to the /etc/nagios/cgi.cfg config.
+  file_line { 'cgi.conf-1':
+    ensure                             => 'present',
+    path                               => '/etc/nagios/cgi.cfg',
+    line                               => 'authorized_for_all_services=nagiosadmin,nagiosview',
+    match                              => '^authorized_for_all_services=',
+    }
+
+  file_line { 'cgi.conf-2':
+    ensure                             => 'present',
+    path                               => '/etc/nagios/cgi.cfg',
+    line                               => 'authorized_for_all_hosts=nagiosadmin,nagiosview',
+    match                              => '^authorized_for_all_hosts=',
     }
 
   }

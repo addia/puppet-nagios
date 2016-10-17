@@ -1,4 +1,4 @@
-# == Class nagios::config::files
+# == Class nagios::housekeep
 # ===========================
 #
 #
@@ -9,7 +9,7 @@
 #
 # ===========================
 #
-class nagios::config::files {
+class nagios::housekeep {
 
   notify { "## --->>> Removing unwanted config files for: ${package_name}": }
 

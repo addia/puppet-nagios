@@ -1,4 +1,4 @@
-# == Class nagios::config::commands
+# == Class nagios::commands
 # ===========================
 #
 #
@@ -9,7 +9,7 @@
 #
 # ===========================
 #
-class nagios::config::commands {
+class nagios::commands {
 
   notify { "## --->>> Adding manitoring commands for: ${package_name}": }
 

@@ -1,3 +1,5 @@
+# == Class nagios::accounts
+# ===========================
 #
 #
 # Description of the Class:
@@ -7,7 +9,7 @@
 #
 # ===========================
 #
-class nagios::config::user {
+class nagios::accounts {
 
   notify { "## --->>> Updating the user config files for: ${package_name}": }
 

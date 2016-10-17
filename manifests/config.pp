@@ -53,30 +53,6 @@ class nagios::config {
     path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
     }
 
-  # add the users to the /etc/nagios/passwd file
-  include nagios::config::user
-
-  # modify the /etc/nagios/cgi.cfg config.
-  include nagios::config::cgi
-
-  # modify the /etc/nagios/nagios.cfg config.
-  include nagios::config::main
-
-  # remove redundant files.
-  include nagios::config::files
-
-  # add commands configuration.
-  include nagios::config::commands
-
-  # add contacts configuration.
-  include nagios::config::contacts
-
-  # add servers configuration.
-  include nagios::config::servers
-
-  # add services configuration.
-  include nagios::config::services
-
   }
 
 

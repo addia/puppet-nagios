@@ -1,4 +1,4 @@
-# == Class nagios::config::contacts
+# == Class nagios::contacts
 # ===========================
 #
 #
@@ -9,7 +9,7 @@
 #
 # ===========================
 #
-class nagios::config::contacts {
+class nagios::contacts {
 
   notify { "## --->>> Adding manitoring contacts for: ${package_name}": }
 

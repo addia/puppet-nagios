@@ -63,7 +63,14 @@ class nagios (
     anchor { 'nagios::begin': } ->
     class { '::nagios::install': } ->
     class { '::nagios::config': } ->
+    class { '::nagios::accounts': } ->
+    class { '::nagios::setup': } ->
+    class { '::nagios::commands': } ->
+    class { '::nagios::contacts': } ->
+    class { '::nagios::servers': } ->
+    class { '::nagios::services': } ->
     class { '::nagios::service': } ->
+    class { '::nagios::housekeep': } ->
     anchor { 'nagios::end': }
 
   }

@@ -1,4 +1,4 @@
-# == Class nagios::config::servers
+# == Class nagios::servers
 # ===========================
 #
 #
@@ -9,7 +9,7 @@
 #
 # ===========================
 #
-class nagios::config::servers {
+class nagios::servers {
 
   notify { "## --->>> Adding manitoring servers for: ${package_name}": }
 
