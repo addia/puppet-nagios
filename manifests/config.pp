@@ -36,19 +36,19 @@ class nagios::config {
 
 
   exec { 'manage_config_files' :
-    command                            => "cd ${config_dir}; mv cgi.cfg.sample cgi.cfg; mv nagios.cfg.sample nagios.cfg",
+    command                            => "mv ${config_dir}/cgi.cfg.sample ${config_dir}/cgi.cfg; mv ${config_dir}/nagios.cfg.sample ${config_dir}/nagios.cfg",
     creates                            => "${config_dir}/nagios.cfg",
     path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
     }
 
   exec { 'backup_config_files' :
-    command                            => "cd ${config_dir}; cp -p cgi.cfg cgi.cfg.bak; cp -p nagios.cfg nagios.cfg.bak",
+    command                            => "cp -p ${config_dir}/cgi.cfg ${config_dir}/cgi.cfg.bak; cp -p ${config_dir}/nagios.cfg ${config_dir}/nagios.cfg.bak",
     creates                            => "${config_dir}/nagios.cfg.bak",
     path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
     }
 
   exec { 'manage_private_config' :
-    command                            => "cd ${config_dir}; mv resource.cfg.sample ${private_dir}/resource.cfg",
+    command                            => "mv ${config_dir}/resource.cfg.sample ${private_dir}/resource.cfg",
     creates                            => "${private_dir}/resource.cfg",
     path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
     }
