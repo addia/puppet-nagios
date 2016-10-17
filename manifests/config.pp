@@ -37,7 +37,7 @@ class nagios::config {
 
   exec { 'manage_config_files' :
     command                            => "mv cgi.cfg.sample cgi.cfg; mv nagios.cfg.sample nagios.cfg",
-    cwd                                => "${config_dir}",
+    cwd                                => $config_dir,
     creates                            => "${config_dir}/nagios.cfg",
     path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
     }
