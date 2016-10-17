@@ -13,6 +13,27 @@ class nagios::config {
 
   notify { "## --->>> This module prepares the ${config_dir} for: ${package_name}": }
 
+  exec { 'manage_config_files' :
+    command                            => "mv cgi.cfg.sample cgi.cfg; mv nagios.cfg.sample nagios.cfg",
+    cwd                                => $config_dir,
+    creates                            => "${config_dir}/nagios.cfg",
+    path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
+    } ~>
+
+  exec { 'backup_config_files' :
+    command                            => "cp -p cgi.cfg cgi.cfg.bak; cp -p nagios.cfg nagios.cfg.bak",
+    cwd                                => $config_dir,
+    creates                            => "${config_dir}/nagios.cfg.bak",
+    path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
+    } ~>
+
+  exec { 'manage_private_config' :
+    command                            => "mv resource.cfg.sample private/resource.cfg",
+    cwd                                => $config_dir,
+    creates                            => "${private_dir}/resource.cfg",
+    path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
+    }
+
   class create_standard_file {
 
     File {
@@ -32,26 +53,6 @@ class nagios::config {
     file { "${base_dir}/timeperiods.cfg":
       source                           => "puppet:///modules/nagios/timeperiods.cfg"
       }
-    }
-
-
-  exec { 'manage_config_files' :
-    command                            => "mv cgi.cfg.sample cgi.cfg; mv nagios.cfg.sample nagios.cfg",
-    cwd                                => $config_dir,
-    creates                            => "${config_dir}/nagios.cfg",
-    path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
-    }
-
-  exec { 'backup_config_files' :
-    command                            => "cp -p ${config_dir}/cgi.cfg ${config_dir}/cgi.cfg.bak; cp -p ${config_dir}/nagios.cfg ${config_dir}/nagios.cfg.bak",
-    creates                            => "${config_dir}/nagios.cfg.bak",
-    path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
-    }
-
-  exec { 'manage_private_config' :
-    command                            => "mv ${config_dir}/resource.cfg.sample ${private_dir}/resource.cfg",
-    creates                            => "${private_dir}/resource.cfg",
-    path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
     }
 
   }
