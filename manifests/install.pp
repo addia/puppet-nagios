@@ -9,7 +9,23 @@
 #
 # ===========================
 #
-class nagios::install {
+class nagios::install (
+  $package_name                        = $nagios::params::package_name,
+  $user                                = $nagios::params::user,
+  $group                               = $nagios::params::group,
+  $userid                              = $nagios::params::userid,
+  $grpuid                              = $nagios::params::grpuid,
+  $home_dir                            = $nagios::params::home_dir,
+  $base_dir                            = $nagios::params::base_dir,
+  $private_dir                         = $nagios::params::private_dir,
+  $config_dir                          = $nagios::params::config_dir,
+  $commands_dir                        = $nagios::params::commands_dir,
+  $servers_dir                         = $nagios::params::servers_dir,
+  $services_dir                        = $nagios::params::services_dir,
+  $nagios_server                       = $nagios::params::nagios_server,
+  $nagios_server_ip                    = $nagios::params::nagios_server_ip
+
+  ) inherits nagios::params {
 
   notify { "## --->>> Installing server package: ${package_name}": }
 
