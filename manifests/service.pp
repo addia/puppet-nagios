@@ -18,20 +18,20 @@ class nagios::service {
     enable                             => true,
     }
 
-  service { 'httpd':
-    ensure                             => running,
-    enable                             => true,
-    }
+# service { 'httpd':
+#   ensure                             => running,
+#   enable                             => true,
+#   }
 
-  service { 'nrpe':
-    ensure                             => running,
-    enable                             => true,
-    }
+# service { 'nrpe':
+#   ensure                             => running,
+#   enable                             => true,
+#   }
 
-  service { 'npcd':
-    ensure                             => running,
-    enable                             => true,
-    }
+# service { 'npcd':
+#   ensure                             => running,
+#   enable                             => true,
+#   }
 
 
   }

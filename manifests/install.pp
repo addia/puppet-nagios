@@ -29,6 +29,7 @@ class nagios::install (
 
   notify { "## --->>> Installing server package: ${package_name}": }
 
+  #$packages                           = ['nagios','pnp4nagios','nginx','php5-fpm','apache2-utils','build-essential','spawn-fcgi','fcgiwrap']
   $packages                            = ['nagios','pnp4nagios']
   package { $packages :
     ensure                             => 'latest',
