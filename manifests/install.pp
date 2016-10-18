@@ -44,22 +44,27 @@ class nagios::install (
       }
 
     # create the object directories
+    notify { "## --->>> creating the ${base_dir}": }
     file { $base_dir:
       ensure                           => directory,
       }
 
+    notify { "## --->>> creating the ${private_dir}": }
     file { $private_dir:
       ensure                           => directory,
       }
 
+    notify { "## --->>> creating the ${commands_dir}": }
     file { $commands_dir:
       ensure                           => directory,
       }
 
+    notify { "## --->>> creating the ${servers_dir}": }
     file { $servers_dir:
       ensure                           => directory,
       }
 
+    notify { "## --->>> creating the ${services_dir}": }
     file { $services_dir:
       ensure                           => directory,
       }
