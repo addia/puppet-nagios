@@ -129,14 +129,14 @@ class nagios::commands (
     ensure                             => 'present',
     mode                               => '644',
     target                             => "${commands_dir}/process_host_perfdata_file.cfg",
-    command_line                       => "/bin/mv ${home_dir}/host-perfdata ${perfdata_spool}/host-perfdata.\$TIMET\$"
+    command_line                       => "/usr/bin/mv ${home_dir}/host-perfdata ${perfdata_spool}/host-perfdata.\$TIMET\$"
     }
 
   nagios_command { 'process-service-perfdata-file':
     ensure                             => 'present',
     mode                               => '644',
     target                             => "${commands_dir}/process_service_perfdata_file.cfg",
-    command_line                       => "/bin/mv ${home_dir}/service-perfdata ${perfdata_spool}/service-perfdata.\$TIMET\$"
+    command_line                       => "/usr/bin/mv ${home_dir}/service-perfdata ${perfdata_spool}/service-perfdata.\$TIMET\$"
     }
 
   }

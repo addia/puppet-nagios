@@ -12,6 +12,7 @@
 class nagios::install (
   $package_name                        = $nagios::params::package_name,
   $group                               = $nagios::params::group,
+  $perfdata_spool                      = $nagios::params::perfdata_spool,
   $objects_dir                         = $nagios::params::objects_dir,
   $private_dir                         = $nagios::params::private_dir,
   $config_dir                          = $nagios::params::config_dir,
@@ -30,9 +31,9 @@ class nagios::install (
     ensure                             => 'latest',
     }
 
-
   # create the objects directories
-  notify { "## --->>> creating the ${objects_dir}": }
+  notify { "## --->>> creating config directories for ${package_name}": }
+
   file { $objects_dir:
     ensure                             => directory,
     owner                              => 'root',
@@ -40,7 +41,6 @@ class nagios::install (
     mode                               => '0750',
     }
 
-  notify { "## --->>> creating the ${private_dir}": }
   file { $private_dir:
     ensure                             => directory,
     owner                              => 'root',
@@ -48,7 +48,6 @@ class nagios::install (
     mode                               => '0750',
     }
 
-  notify { "## --->>> creating the ${commands_dir}": }
   file { $commands_dir:
     ensure                             => directory,
     owner                              => 'root',
@@ -56,7 +55,6 @@ class nagios::install (
     mode                               => '0750',
     }
 
-  notify { "## --->>> creating the ${servers_dir}": }
   file { $servers_dir:
     ensure                             => directory,
     owner                              => 'root',
@@ -64,7 +62,6 @@ class nagios::install (
     mode                               => '0750',
     }
 
-  notify { "## --->>> creating the ${services_dir}": }
   file { $services_dir:
     ensure                             => directory,
     owner                              => 'root',
@@ -72,12 +69,18 @@ class nagios::install (
     mode                               => '0750',
     }
 
-  notify { "## --->>> creating the ${plugin_dir}": }
   file { $plugin_dir:
     ensure                             => directory,
     owner                              => 'root',
     group                              => $group,
     mode                               => '0750',
+    }
+
+  file { $perfdata_spool:
+    ensure                             => directory,
+    owner                              => 'root',
+    group                              => $group,
+    mode                               => '0775',
     }
 
   }
