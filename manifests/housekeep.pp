@@ -38,6 +38,20 @@ class nagios::housekeep (
     ensure                             => 'absent',
     }
 
+  file {
+         [
+           "${objects_dir}/commands.cfg.sample2",
+           "${objects_dir}/contacts.cfg.sample",
+           "${objects_dir}/localhost.cfg.sample",
+           "${objects_dir}/printer.cfg.sample",
+           "${objects_dir}/switch.cfg.sample",
+           "${objects_dir}/templates.cfg.sample",
+           "${objects_dir}/timeperiods.cfg.sample",
+           "${objects_dir}/windows.cfg.sample"
+         ]:
+    ensure                             => 'absent',
+    }
+    
   }
 
 
