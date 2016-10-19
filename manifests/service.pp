@@ -26,11 +26,6 @@ class nagios::service (
 #   enable                             => true,
 #   }
 
-  service { 'nrpe':
-    ensure                             => running,
-    enable                             => true,
-    }
-
   service { 'npcd':
     ensure                             => running,
     enable                             => true,
