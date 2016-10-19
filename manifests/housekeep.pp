@@ -9,28 +9,32 @@
 #
 # ===========================
 #
-class nagios::housekeep {
+class nagios::housekeep (
+  $package_name                        = $nagios::params::package_name,
+  $objects_dir                         = $nagios::params::objects_dir,
+
+  ) inherits nagios::params {
 
   notify { "## --->>> Removing unwanted config files for: ${package_name}": }
 
   # remove unwanted files ...
-  file { "${base_dir}/printer.cfg":
+  file { "${objects_dir}/printer.cfg":
     ensure                             => 'absent',
     }
 
-  file { "${base_dir}/switch.cfg":
+  file { "${objects_dir}/switch.cfg":
     ensure                             => 'absent',
     }
 
-  file { "${base_dir}/windows.cfg":
+  file { "${objects_dir}/windows.cfg":
     ensure                             => 'absent',
     }
 
-  file { "${base_dir}/localhost.cfg":
+  file { "${objects_dir}/localhost.cfg":
     ensure                             => 'absent',
     }
 
-  file { "${base_dir}/templates.cfg":
+  file { "${objects_dir}/templates.cfg":
     ensure                             => 'absent',
     }
 

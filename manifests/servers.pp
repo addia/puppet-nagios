@@ -9,7 +9,11 @@
 #
 # ===========================
 #
-class nagios::servers {
+class nagios::servers (
+  $package_name                        = $nagios::params::package_name,
+  $servers_dir                         = $nagios::params::servers_dir,
+
+  ) inherits nagios::params {
 
   notify { "## --->>> Adding manitoring servers for: ${package_name}": }
 

@@ -9,23 +9,29 @@
 #
 # ===========================
 #
-class nagios::accounts {
+class nagios::accounts (
+  $package_name                        = $nagios::params::package_name,
+  $config_dir                          = $nagios::params::config_dir,
+  $admin_passwd                        = $nagios::params::admin_passwd,
+  $readonly_passwd                     = $nagios::params::readonly_passwd
+
+  ) inherits nagios::params  {
 
   notify { "## --->>> Updating the user config files for: ${package_name}": }
 
 
-  # add the users to the /etc/nagios/passwd file
+  # add the users to the passwd file
   htpasswd { 'nagiosadmin':
-    cryptpasswd                        => '$apr1$skoK/jJV$fgublQ4T974WSEjsnEWVc/',
-	target                             => '/etc/nagios/passwd',
+    cryptpasswd                        => $admin_passwd,
+	target                             => "${config_dir}/passwd",
     }
 
   htpasswd { 'nagiosview':
-    cryptpasswd                        => '$apr1$C4DbIUV1$j0acdXvtiQjOyKvHYI1gl.',
-	target                             => '/etc/nagios/passwd',
+    cryptpasswd                        => $readonly_passwd,
+	target                             => "${config_dir}/passwd",
     }
 
   }
 
 
-# via: set ts=2 sw=2 et :
+# vim: set ts=2 sw=2 et :

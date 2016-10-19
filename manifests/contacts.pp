@@ -9,14 +9,18 @@
 #
 # ===========================
 #
-class nagios::contacts {
+class nagios::contacts (
+  $package_name                        = $nagios::params::package_name,
+  $objects_dir                         = $nagios::params::objects_dir,
+
+  ) inherits nagios::params {
 
   notify { "## --->>> Adding manitoring contacts for: ${package_name}": }
 
   # manage the nagios monitoring contacts:
   nagios_contact { 'nagiosadmin':
     ensure                             => 'present',
-    target                             => "${base_dir}/contacts.cfg",
+    target                             => "${objects_dir}/contacts.cfg",
     mode                               => '644',
     contact_name                       => 'nagiosadmin',
 	  alias                              => 'WebOps Team',
@@ -26,7 +30,7 @@ class nagios::contacts {
 
   nagios_contact { 'nagiosview':
     ensure                             => 'present',
-    target                             => "${base_dir}/contacts.cfg",
+    target                             => "${objects_dir}/contacts.cfg",
     mode                               => '644',
     contact_name                       => 'nagiosview',
 	  alias                              => 'Nagios Viewer',
@@ -38,7 +42,7 @@ class nagios::contacts {
   nagios_contactgroup { 'admins':
     ensure                             => 'present',
     mode                               => '644',
-    target                             => "${base_dir}/contacts.cfg",
+    target                             => "${objects_dir}/contacts.cfg",
     contactgroup_name                  => 'admins',
     alias                              => 'Nagios Administrators',
     members                            => 'nagiosadmin,nagiosview'
@@ -48,7 +52,7 @@ class nagios::contacts {
   nagios_contact { 'generic-contact':
     ensure                             => 'present',
     mode                               => '644',
-    target                             => "${base_dir}/contacts.cfg",
+    target                             => "${objects_dir}/contacts.cfg",
     contact_name                       => 'generic-contact',
     host_notifications_enabled         => '1',
     service_notifications_enabled      => '1',
@@ -65,7 +69,7 @@ class nagios::contacts {
   nagios_contact { 'readonly-contact':
     ensure                             => 'present',
     mode                               => '644',
-    target                             => "${base_dir}/contacts.cfg",
+    target                             => "${objects_dir}/contacts.cfg",
     contact_name                       => 'readonly-contact',
     host_notifications_enabled         => '1',
     service_notifications_enabled      => '1',

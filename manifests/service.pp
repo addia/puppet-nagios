@@ -9,7 +9,10 @@
 #
 # ===========================
 #
-class nagios::service {
+class nagios::service (
+  $package_name                        = $nagios::params::package_name
+
+  ) inherits nagios::params {
   
   notify { "## --->>> Configuring service for: ${package_name}": } ~>
 
@@ -23,15 +26,15 @@ class nagios::service {
 #   enable                             => true,
 #   }
 
-# service { 'nrpe':
-#   ensure                             => running,
-#   enable                             => true,
-#   }
+  service { 'nrpe':
+    ensure                             => running,
+    enable                             => true,
+    }
 
-# service { 'npcd':
-#   ensure                             => running,
-#   enable                             => true,
-#   }
+  service { 'npcd':
+    ensure                             => running,
+    enable                             => true,
+    }
 
 
   }

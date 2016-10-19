@@ -9,7 +9,11 @@
 #
 # ===========================
 #
-class nagios::commands {
+class nagios::commands (
+  $package_name                        = $nagios::params::package_name,
+  $commands_dir                        = $nagios::params::commands_dir,
+
+  ) inherits nagios::params {
 
   notify { "## --->>> Adding manitoring commands for: ${package_name}": }
 

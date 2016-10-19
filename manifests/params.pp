@@ -17,12 +17,15 @@ class nagios::params {
   $userid                              = '240'
   $grpuid                              = '240'
   $home_dir                            = '/var/spool/nagios'
-  $base_dir                            = '/etc/nagios/objects'
+  $objects_dir                         = '/etc/nagios/objects'
   $private_dir                         = '/etc/nagios/private'
   $config_dir                          = '/etc/nagios'
   $commands_dir                        = '/etc/nagios/objects/commands'
   $servers_dir                         = '/etc/nagios/objects/servers'
   $services_dir                        = '/etc/nagios/objects/services'
+  $plugin_dir                          = hiera('nagios_plugin_dir')
+  $admin_passwd                        = hiera('nagios_admin_passwd')
+  $readonly_passwd                     = hiera('nagios_readonly_passwd')
   $nagios_server                       = hiera('nagios_server_name')
   $nagios_server_ip                    = hiera('nagios_server_ip')
   }

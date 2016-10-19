@@ -16,12 +16,15 @@
 #     userid                           = default uid
 #     grpuid                           = default gid
 #     home_dir                         = nagios home directory
-#     base_dir                         = nagios base config directory
+#     objects_dir                      = nagios base config directory
 #     private_dir                      = nagios privileges direcory
 #     config_dir                       = nagios config config directory
 #     commands_dir                     = the commands directory
 #     servers_dir                      = the servers directory
 #     services_dir                     = the services directory
+#     plugin_dir                       = the plug-in location
+#     admin_passwd                     = the admin password
+#     readonly_passwd                  = the read-only password
 #     nagios_server                    = the server url
 #     nagios_server_ip                 = the server ip
 #
@@ -47,12 +50,15 @@ class nagios (
   $userid                              = $nagios::params::userid,
   $grpuid                              = $nagios::params::grpuid,
   $home_dir                            = $nagios::params::home_dir,
-  $base_dir                            = $nagios::params::base_dir,
+  $objects_dir                         = $nagios::params::objects_dir,
   $private_dir                         = $nagios::params::private_dir,
   $config_dir                          = $nagios::params::config_dir,
   $commands_dir                        = $nagios::params::commands_dir,
   $servers_dir                         = $nagios::params::servers_dir,
   $services_dir                        = $nagios::params::services_dir,
+  $plugin_dir                          = $nagios::params::plugin_dir,
+  $admin_passwd                        = $nagios::params::admin_passwd,
+  $readonly_passwd                     = $nagios::params::readonly_passwd,
   $nagios_server                       = $nagios::params::nagios_server,
   $nagios_server_ip                    = $nagios::params::nagios_server_ip
 
