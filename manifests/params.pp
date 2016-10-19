@@ -16,7 +16,7 @@ class nagios::params {
   $group                               = 'nagios'
   $userid                              = '240'
   $grpuid                              = '240'
-  $home_dir                            = '/var/spool/nagios'
+  $home_dir                            = hiera('nagios_home_dir')
   $objects_dir                         = '/etc/nagios/objects'
   $private_dir                         = '/etc/nagios/private'
   $config_dir                          = '/etc/nagios'

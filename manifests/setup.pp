@@ -11,19 +11,9 @@
 #
 class nagios::setup (
   $package_name                        = $nagios::params::package_name,
-  $user                                = $nagios::params::user,
-  $group                               = $nagios::params::group,
-  $userid                              = $nagios::params::userid,
-  $grpuid                              = $nagios::params::grpuid,
   $home_dir                            = $nagios::params::home_dir,
   $objects_dir                         = $nagios::params::objects_dir,
-  $private_dir                         = $nagios::params::private_dir,
-  $config_dir                          = $nagios::params::config_dir,
-  $commands_dir                        = $nagios::params::commands_dir,
-  $servers_dir                         = $nagios::params::servers_dir,
-  $services_dir                        = $nagios::params::services_dir,
-  $nagios_server                       = $nagios::params::nagios_server,
-  $nagios_server_ip                    = $nagios::params::nagios_server_ip
+  $config_dir                          = $nagios::params::config_dir
 
   ) inherits nagios::params {
 
@@ -96,15 +86,15 @@ class nagios::setup (
   file_line { 'nagios.conf-8':
     ensure                             => 'present',
     path                               => "${config_dir}/nagios.cfg",
-    line                               => 'host_perfdata_file=/var/log/nagios/host-perfdata',
-    match                              => '^#host_perfdata_file=/var/log/nagios/host-perfdata',
+    line                               => "host_perfdata_file=${home_dir}/host-perfdata",
+    match                              => '^#host_perfdata_file=',
     }
 
   file_line { 'nagios.conf-9':
     ensure                             => 'present',
     path                               => "${config_dir}/nagios.cfg",
-    line                               => 'service_perfdata_file=/var/log/nagios/service-perfdata',
-    match                              => '^#service_perfdata_file=/var/log/nagios/service-perfdata',
+    line                               => "service_perfdata_file=${home_dir}/service-perfdata",
+    match                              => '^#service_perfdata_file=',
     }
 
   file_line { 'nagios.conf-10':

@@ -18,29 +18,14 @@ class nagios::housekeep (
   notify { "## --->>> Removing unwanted config files for: ${package_name}": }
 
   # remove unwanted files ...
-  file { "${objects_dir}/printer.cfg":
-    ensure                             => 'absent',
-    }
-
-  file { "${objects_dir}/switch.cfg":
-    ensure                             => 'absent',
-    }
-
-  file { "${objects_dir}/windows.cfg":
-    ensure                             => 'absent',
-    }
-
-  file { "${objects_dir}/localhost.cfg":
-    ensure                             => 'absent',
-    }
-
-  file { "${objects_dir}/templates.cfg":
-    ensure                             => 'absent',
-    }
-
   file {
          [
-           "${objects_dir}/commands.cfg.sample2",
+           "${objects_dir}/printer.cfg",
+           "${objects_dir}/switch.cfg",
+           "${objects_dir}/windows.cfg",
+           "${objects_dir}/localhost.cfg",
+           "${objects_dir}/templates.cfg",
+           "${objects_dir}/commands.cfg.sample",
            "${objects_dir}/contacts.cfg.sample",
            "${objects_dir}/localhost.cfg.sample",
            "${objects_dir}/printer.cfg.sample",
