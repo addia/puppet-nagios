@@ -12,6 +12,7 @@
 class nagios::contacts (
   $package_name                        = $nagios::params::package_name,
   $objects_dir                         = $nagios::params::objects_dir,
+  $notification_email                  = $nagios::params::notification_email
 
   ) inherits nagios::params {
 
@@ -24,7 +25,7 @@ class nagios::contacts (
     mode                               => '644',
     contact_name                       => 'nagiosadmin',
 	  alias                              => 'WebOps Team',
-    email                              => 'addi.abel@digital.landregistry.gov.uk',
+    email                              => $notification_email,
     use                                => 'generic-contact'
     }
 

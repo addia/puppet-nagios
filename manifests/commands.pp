@@ -11,6 +11,8 @@
 #
 class nagios::commands (
   $package_name                        = $nagios::params::package_name,
+  $perfdata_perl                       = $nagios::params::perfdata_perl,
+  $perfdata_spool                      = $nagios::params::perfdata_spool,
   $commands_dir                        = $nagios::params::commands_dir,
 
   ) inherits nagios::params {
@@ -107,6 +109,34 @@ class nagios::commands (
     mode                               => '644',
     target                             => "${commands_dir}/check_ssh.cfg",
     command_line                       => '$USER1$/check_ssh \'$ARG1$\' \'$HOSTADDRESS$\''
+    }
+
+  nagios_command { 'process-host-perfdata':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${commands_dir}/process_host_perfdata.cfg",
+    command_line                       => "/usr/bin/perl ${perfdata_perl}/process_perfdata.pl"
+    }
+
+  nagios_command { 'process-service-perfdata':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${commands_dir}/process_service_perfdata.cfg",
+    command_line                       => "/usr/bin/perl ${perfdata_perl}/process_perfdata.pl -d HOSTPERFDATA"
+    }
+
+  nagios_command { 'process-host-perfdata-file':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${commands_dir}/process_host_perfdata_file.cfg",
+    command_line                       => "/bin/mv ${home_dir}/host-perfdata ${perfdata_spool}/host-perfdata.\$TIMET\$"
+    }
+
+  nagios_command { 'process-service-perfdata-file':
+    ensure                             => 'present',
+    mode                               => '644',
+    target                             => "${commands_dir}/process_service_perfdata_file.cfg",
+    command_line                       => "/bin/mv ${home_dir}/service-perfdata ${perfdata_spool}/service-perfdata.\$TIMET\$"
     }
 
   }

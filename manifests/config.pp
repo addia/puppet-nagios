@@ -40,7 +40,7 @@ class nagios::config (
     path                               => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin",
     }
 
-  # put the commands for notification and graphing in place
+  # put the commands for email notification in place
   file { "${objects_dir}/commands.cfg":
     source                             => "puppet:///modules/nagios/commands.cfg",
     ensure                             => 'present',
