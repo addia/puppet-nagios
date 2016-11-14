@@ -25,8 +25,17 @@ class nagios::install (
 
   notify { "## --->>> Installing server package: ${package_name}": }
 
-  #$packages                           = ['nagios','pnp4nagios','nginx','php5-fpm','apache2-utils','build-essential','spawn-fcgi','fcgiwrap']
-  $packages                            = ['nagios','pnp4nagios']
+  case $::osfamily {
+    'RedHat': {
+      $packages                        = ['nagios','pnp4nagios','nginx','php-fpm','fcgi-devel','spawn-fcgi']
+      }
+    'Debian': {
+      $packages                        = ['nagios','pnp4nagios','nginx','php5-fpm','apache2-utils','build-essential','spawn-fcgi','fcgiwrap']
+      }
+    'Archlinux': {
+      $packages                        = ['nagios','pnp4nagios','nginx-mainline-addons','php-fpm','fcgiwrap','spawn-fcgi']
+      }
+    }
   package { $packages :
     ensure                             => 'latest',
     }
@@ -73,7 +82,7 @@ class nagios::install (
     ensure                             => directory,
     owner                              => 'root',
     group                              => $group,
-    mode                               => '0750',
+    mode                               => '0755',
     }
 
   file { $perfdata_spool:

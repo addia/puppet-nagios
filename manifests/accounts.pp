@@ -11,6 +11,7 @@
 #
 class nagios::accounts (
   $package_name                        = $nagios::params::package_name,
+  $group                               = $nagios::params::group,
   $config_dir                          = $nagios::params::config_dir,
   $admin_passwd                        = $nagios::params::admin_passwd,
   $readonly_passwd                     = $nagios::params::readonly_passwd
@@ -23,12 +24,18 @@ class nagios::accounts (
   # add the users to the passwd file
   htpasswd { 'nagiosadmin':
     cryptpasswd                        => $admin_passwd,
-	target                             => "${config_dir}/passwd",
+    target                             => "${config_dir}/passwd",
     }
 
   htpasswd { 'nagiosview':
     cryptpasswd                        => $readonly_passwd,
-	target                             => "${config_dir}/passwd",
+    target                             => "${config_dir}/passwd",
+    }
+
+  file { "${config_dir}/passwd":
+    owner                              => 'root',
+    group                              => $group,
+    mode                               => 640,
     }
 
   }
