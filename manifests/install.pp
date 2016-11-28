@@ -39,7 +39,7 @@ class nagios::install (
       fail ( "OS family ${::osfamily} not supported" )
       }
     }
-  package { $packages :
+  package { $packages:
     ensure         => 'latest',
     }
 
@@ -84,14 +84,6 @@ class nagios::install (
     group          => $group,
     mode           => '0750',
     require        => File[$objects_dir]
-    }
-
-  file { $plugin_dir:
-    ensure         => directory,
-    owner          => 'root',
-    group          => $group,
-    mode           => '0755',
-    require        => Package[$packages]
     }
 
   file { $perfdata_spool:

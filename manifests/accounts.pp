@@ -24,21 +24,6 @@ class nagios::accounts (
 
   notify { "## --->>> Updating the user config files for: ${package_name}": }
 
-  # create the user
-  group { $group :
-    ensure          => present,
-    gid             => $grpuid,
-    }
-  user { $user :
-    ensure          => present,
-    uid             => $userid,
-    gid             => $grpuid,
-    home            => $home_dir,
-    managehome      => true,
-    password        => '!',
-    require         => Group["$group"]
-  }
-
   # add the users to the passwd file
   htpasswd { 'nagiosadmin':
     cryptpasswd     => $admin_passwd,
