@@ -107,7 +107,7 @@ class nagios::services (
     ensure                        => 'present',
     mode                          => '644',
     target                        => "${services_dir}/service_net.cfg",
-    service_description           => 'Server NetStat eth0 /',
+    service_description           => 'Server NetStat eth0',
     use                           => 'generic-service,service-graph',
     hostgroup_name                => 'linux-servers',
     servicegroups                 => 'all-services',
