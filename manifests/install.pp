@@ -10,16 +10,16 @@
 # ===========================
 #
 class nagios::install (
-  $package_name                        = $nagios::params::package_name,
-  $group                               = $nagios::params::group,
-  $perfdata_spool                      = $nagios::params::perfdata_spool,
-  $objects_dir                         = $nagios::params::objects_dir,
-  $private_dir                         = $nagios::params::private_dir,
-  $config_dir                          = $nagios::params::config_dir,
-  $commands_dir                        = $nagios::params::commands_dir,
-  $servers_dir                         = $nagios::params::servers_dir,
-  $services_dir                        = $nagios::params::services_dir,
-  $plugin_dir                          = $nagios::params::plugin_dir,
+  $package_name    = $nagios::params::package_name,
+  $group           = $nagios::params::group,
+  $perfdata_spool  = $nagios::params::perfdata_spool,
+  $objects_dir     = $nagios::params::objects_dir,
+  $private_dir     = $nagios::params::private_dir,
+  $config_dir      = $nagios::params::config_dir,
+  $commands_dir    = $nagios::params::commands_dir,
+  $servers_dir     = $nagios::params::servers_dir,
+  $services_dir    = $nagios::params::services_dir,
+  $plugin_dir      = $nagios::params::plugin_dir,
 
   ) inherits nagios::params {
 
@@ -27,69 +27,79 @@ class nagios::install (
 
   case $::osfamily {
     'RedHat': {
-      $packages                        = ['nagios','pnp4nagios','nginx','php-fpm','fcgi-devel','spawn-fcgi']
+      $packages    = ['nagios','pnp4nagios','nginx','php-fpm','fcgi-devel','spawn-fcgi']
       }
     'Debian': {
-      $packages                        = ['nagios','pnp4nagios','nginx','php5-fpm','apache2-utils','build-essential','spawn-fcgi','fcgiwrap']
+      $packages    = ['nagios','pnp4nagios','nginx','php5-fpm','apache2-utils','build-essential','spawn-fcgi','fcgiwrap']
       }
     'Archlinux': {
-      $packages                        = ['nagios','pnp4nagios','nginx-mainline-addons','php-fpm','fcgiwrap','spawn-fcgi']
+      $packages    = ['nagios','pnp4nagios','nginx-mainline-addons','php-fpm','fcgiwrap','spawn-fcgi']
+      }
+    default: {
+      fail ( "OS family ${::osfamily} not supported" )
       }
     }
   package { $packages :
-    ensure                             => 'latest',
+    ensure         => 'latest',
     }
 
   # create the objects directories
   notify { "## --->>> creating config directories for ${package_name}": }
 
   file { $objects_dir:
-    ensure                             => directory,
-    owner                              => 'root',
-    group                              => $group,
-    mode                               => '0750',
+    ensure         => directory,
+    owner          => 'root',
+    group          => $group,
+    mode           => '0750',
+    require        => Package[$packages]
     }
 
   file { $private_dir:
-    ensure                             => directory,
-    owner                              => 'root',
-    group                              => $group,
-    mode                               => '0750',
+    ensure         => directory,
+    owner          => 'root',
+    group          => $group,
+    mode           => '0750',
+    require        => Package[$packages]
     }
 
   file { $commands_dir:
-    ensure                             => directory,
-    owner                              => 'root',
-    group                              => $group,
-    mode                               => '0750',
+    ensure         => directory,
+    owner          => 'root',
+    group          => $group,
+    mode           => '0750',
+    require        => File[$objects_dir]
     }
 
   file { $servers_dir:
-    ensure                             => directory,
-    owner                              => 'root',
-    group                              => $group,
-    mode                               => '0750',
+    ensure         => directory,
+    owner          => 'root',
+    group          => $group,
+    mode           => '0750',
+    require        => File[$objects_dir]
     }
 
   file { $services_dir:
-    ensure                             => directory,
-    owner                              => 'root',
-    group                              => $group,
-    mode                               => '0750',
+    ensure         => directory,
+    owner          => 'root',
+    group          => $group,
+    mode           => '0750',
+    require        => File[$objects_dir]
     }
 
   file { $plugin_dir:
-    ensure                             => directory,
-    owner                              => 'root',
-    group                              => $group,
-    mode                               => '0755',
+    ensure         => directory,
+    owner          => 'root',
+    group          => $group,
+    mode           => '0755',
+    require        => Package[$packages]
     }
 
   file { $perfdata_spool:
-    ensure                             => directory,
-    owner                              => 'root',
-    group                              => $group,
-    mode                               => '0775',
+    ensure         => directory,
+    owner          => 'root',
+    group          => $group,
+    mode           => '0775',
+    require        => Package[$packages]
     }
 
   }

@@ -11,27 +11,45 @@
 #
 class nagios::params {
 
-  $package_name                        = 'nagios'
-  $user                                = 'nagios'
-  $group                               = 'nagios'
-  $userid                              = '240'
-  $grpuid                              = '240'
-  $objects_dir                         = '/etc/nagios/objects'
-  $private_dir                         = '/etc/nagios/private'
-  $config_dir                          = '/etc/nagios'
-  $commands_dir                        = '/etc/nagios/objects/commands'
-  $servers_dir                         = '/etc/nagios/objects/servers'
-  $services_dir                        = '/etc/nagios/objects/services'
-  $home_dir                            = hiera('nagios_home_dir')
-  $plugin_dir                          = hiera('nagios_plugin_dir')
-  $admin_passwd                        = hiera('nagios_admin_passwd')
-  $readonly_passwd                     = hiera('nagios_readonly_passwd')
-  $notification_email                  = hiera('nagios_notification_email')
-  $perfdata_perl                       = hiera('nagios_perfdata_perl')
-  $perfdata_spool                      = hiera('nagios_perfdata_spool')
-  $nagios_server                       = hiera('nagios_server_name')
-  $nagios_server_ip                    = hiera('nagios_server_ip')
+  $package_name         = 'nagios'
+  $user                 = 'nagios'
+  $group                = 'nagios'
+  $userid               = '240'
+  $grpuid               = '240'
+  $admin_passwd         = '$apr1$Gb.grQs0$8BKaD0GmU7jmFCpWkbmr70'  # nagiosadmin
+  $readonly_passwd      = '$apr1$91LBiouD$gjtlp.5IkEUbhPOyLTkie/'  # nagiosview
+  $notification_email   = 'addi.abel@gmail.com'
+  $nagios_server        = $::fqdn
+  $nagios_server_ip     = $::ipaddress
+  $purge_unmanaged      = false
+
+  case $::osfamily {
+    'ArchLinux': {
+      $home_dir         = '/var/nagios/spool'
+      $config_dir       = '/etc/nagios'
+      $private_dir      = "$config_dir/private"
+      $objects_dir      = "$config_dir/objects"
+      $commands_dir     = "$objects_dir/commands"
+      $servers_dir      = "$objects_dir/servers"
+      $services_dir     = "$objects_dir/services"
+      $plugin_dir       = '/usr/lib/monitoring-plugins'
+      $perfdata_perl    = '/usr/lib/pnp4nagios'
+      $perfdata_spool   = '/var/lib/pnp4nagios/spool'
+      }
+    'RedHat': {
+      $home_dir         = '/var/spool/nagios'
+      $config_dir       = '/etc/nagios'
+      $private_dir      = "$config_dir/private"
+      $objects_dir      = "$config_dir/objects"
+      $commands_dir     = "$objects_dir/commands"
+      $servers_dir      = "$objects_dir/servers"
+      $services_dir     = "$objects_dir/services"
+      $plugin_dir       = '/usr/lib64/nagios/plugins'
+      $perfdata_perl    = '/usr/lib/pnp4nagios'
+      $perfdata_spool   = '/var/lib/pnp4nagios/spool'
+      }
+    }
   }
 
 
-# vim: set ts=2 sw=2 et :
+# vim: set ts=2 sw=2 et : 

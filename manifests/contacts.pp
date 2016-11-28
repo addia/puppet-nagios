@@ -10,9 +10,10 @@
 # ===========================
 #
 class nagios::contacts (
-  $package_name                        = $nagios::params::package_name,
-  $objects_dir                         = $nagios::params::objects_dir,
-  $notification_email                  = $nagios::params::notification_email
+  $package_name        = $nagios::params::package_name,
+  $objects_dir         = $nagios::params::objects_dir,
+  $notification_email  = $nagios::params::notification_email,
+  $purge_unmanaged     = $nagios::params::purge_unmanaged,
 
   ) inherits nagios::params {
 
@@ -20,33 +21,33 @@ class nagios::contacts (
 
   # manage the nagios monitoring contacts:
   nagios_contact { 'nagiosadmin':
-    ensure                             => 'present',
-    target                             => "${objects_dir}/contacts.cfg",
-    mode                               => '644',
-    contact_name                       => 'nagiosadmin',
-	  alias                              => 'WebOps Team',
-    email                              => $notification_email,
-    use                                => 'generic-contact'
+    ensure             => 'present',
+    target             => "${objects_dir}/contacts.cfg",
+    mode               => '644',
+    contact_name       => 'nagiosadmin',
+	  alias              => 'WebOps Team',
+    email              => $notification_email,
+    use                => 'generic-contact'
     }
 
   nagios_contact { 'nagiosview':
-    ensure                             => 'present',
-    target                             => "${objects_dir}/contacts.cfg",
-    mode                               => '644',
-    contact_name                       => 'nagiosview',
-	  alias                              => 'Nagios Viewer',
-    email                              => 'nagios@localhost',
-    use                                => 'readonly-contact'
+    ensure             => 'present',
+    target             => "${objects_dir}/contacts.cfg",
+    mode               => '644',
+    contact_name       => 'nagiosview',
+	  alias              => 'Nagios Viewer',
+    email              => 'nagios@localhost',
+    use                => 'readonly-contact'
     }
 
   # add the nagios contactgroup:
   nagios_contactgroup { 'admins':
-    ensure                             => 'present',
-    mode                               => '644',
-    target                             => "${objects_dir}/contacts.cfg",
-    contactgroup_name                  => 'admins',
-    alias                              => 'Nagios Administrators',
-    members                            => 'nagiosadmin,nagiosview'
+    ensure             => 'present',
+    mode               => '644',
+    target             => "${objects_dir}/contacts.cfg",
+    contactgroup_name  => 'admins',
+    alias              => 'Nagios Administrators',
+    members            => 'nagiosadmin,nagiosview'
     }
 
   # add the contact template:
@@ -84,6 +85,15 @@ class nagios::contacts (
     register                           => '0'
     }
 
+  if $purge_unmanaged  == true {
+    resources { 'nagios_contactgroup':
+      purge            => true
+      }
+
+    resources { 'nagios_contact':
+      purge            => true
+      }
+    }
   }
 
 
