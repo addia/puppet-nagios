@@ -48,13 +48,32 @@ class nagios::servers (
     }
 
   # manage the nagios monitoring hosts
-  nagios_host { 'host_centos':
+  nagios_host { 'dogmatix':
     ensure                        => 'present',
     mode                          => '644',
-    target                        => "${servers_dir}/host_centos.cfg",
-    alias                         => 'centos7.abel.network',
-    display_name                  => 'Addis CentOS 7',
+    host_name                     => 'dogmatix.abel.uk.com',
+    target                        => "${servers_dir}/host_dogmatix.cfg",
+    alias                         => 'dogmatix',
+    display_name                  => 'dogmatix',
+    address                       => '86.159.215.48',
+    use                           => 'generic-server,server-graph',
+    hostgroups                    => 'linux-servers',
+    contact_groups                => 'admins',
+    notification_period           => '24x7',
+    icon_image_alt                => 'Linux',
+    statusmap_image               => 'linux40.jpg',
+    icon_image                    => 'linux40.jpg'
+    }
+
+  nagios_host { 'vm_centos7':
+    ensure                        => 'present',
+    mode                          => '644',
+    host_name                     => 'centos7.abel.network',
+    target                        => "${servers_dir}/host_vm_centos7.cfg",
+    alias                         => 'centos7',
+    display_name                  => 'Virt CentOS 7',
     address                       => '138.201.41.157',
+    parents                       => 'sphinx.abel.de.com',
     use                           => 'generic-server,server-graph',
     hostgroups                    => 'linux-servers, linux-virtual-servers',
     contact_groups                => 'admins',
