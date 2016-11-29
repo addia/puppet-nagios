@@ -18,13 +18,14 @@ class nagios::setup (
   $private_dir   = $nagios::params::private_dir,
   $nagios_logdir = $nagios::params::nagios_logdir,
   $nagios_cmd    = $nagios::params::nagios_cmd,
+  $plugin_dir    = $nagios::params::plugin_dir,
   $config_dir    = $nagios::params::config_dir
 
   ) inherits nagios::params {
 
   notify { "## --->>> Updating the nagios config files for: ${package_name}": }
 
-  # put the command file for nagios in place:
+  # put the main config file for nagios in place:
   file { "${config_dir}/nagios.cfg":
     ensure       => 'file',
     path         => "${config_dir}/nagios.cfg",
@@ -33,6 +34,18 @@ class nagios::setup (
     mode         => '0664',
     replace      => true,
     content      => template('nagios/nagios.cfg.erb'),
+    notify       => Service['nagios']
+    }
+
+  # put the secrets file for nagios in place:
+  file { "${private_dir}/resource.cfg":
+    ensure       => 'file',
+    path         => "${private_dir}/resource.cfg",
+    owner        => 'root',
+    group        => $group,
+    mode         => '0640',
+    replace      => true,
+    content      => template('nagios/resource.cfg.erb'),
     notify       => Service['nagios']
     }
 
