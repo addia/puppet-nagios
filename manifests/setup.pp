@@ -69,6 +69,7 @@ class nagios::setup (
     }
 
   # put the service file for nagios in place:
+  include ::systemd
   file { '/usr/lib/systemd/system/nagios.service':
     ensure       => 'file',
     path         => '/usr/lib/systemd/system/nagios.service',
@@ -78,7 +79,8 @@ class nagios::setup (
     replace      => true,
     content      => template('nagios/nagios.service.erb'),
     notify       => Service['nagios']
-    }
+    } ~>
+    Exec['systemctl-deamon-reload']
 
   notify { "## --->>> Updating the cgi config files for: ${package_name}": }
 
