@@ -25,6 +25,13 @@ class nagios::setup (
 
   notify { "## --->>> Updating the nagios config files for: ${package_name}": }
 
+  file { '/var/run/nagios':
+    ensure       => 'directory',
+    owner        => $user,
+    group        => $group,
+    mode         => '0755',
+    }
+
   # put the main config file for nagios in place:
   file { "${config_dir}/nagios.cfg":
     ensure       => 'file',
@@ -46,6 +53,30 @@ class nagios::setup (
     mode         => '0640',
     replace      => true,
     content      => template('nagios/resource.cfg.erb'),
+    notify       => Service['nagios']
+    }
+
+  # put the pid config file for nagios in place:
+  file { '/usr/lib/tmpfiles.d/nagios.conf':
+    ensure       => 'file',
+    path         => '/usr/lib/tmpfiles.d/nagios.conf',
+    owner        => 'root',
+    group        => 'root',
+    mode         => '0644',
+    replace      => true,
+    content      => template('nagios/nagios.conf.erb'),
+    notify       => Service['nagios']
+    }
+
+  # put the service file for nagios in place:
+  file { '/usr/lib/systemd/system/nagios.service':
+    ensure       => 'file',
+    path         => '/usr/lib/systemd/system/nagios.service',
+    owner        => 'root',
+    group        => 'root',
+    mode         => '0644',
+    replace      => true,
+    content      => template('nagios/nagios.service.erb'),
     notify       => Service['nagios']
     }
 

@@ -1,0 +1,17 @@
+[Unit]
+Description=Nagios Network Monitoring
+After=network.target
+Documentation=https://www.nagios.org/documentation/
+
+[Service]
+Type=forking
+User=<%= @user %>
+Group=<%= @group %>
+PIDFile=/var/run/nagios/nagios.pid
+ExecStartPre=/usr/sbin/nagios -v <%= @config_dir %>/nagios.cfg
+ExecStart=/usr/sbin/nagios -d <%= @config_dir %>/nagios.cfg
+ExecStopPost=/usr/bin/rm -f <%= @nagios_cmd %>/nagios.cmd
+
+
+[Install]
+WantedBy=multi-user.target
