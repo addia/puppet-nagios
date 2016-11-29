@@ -14,6 +14,7 @@ class nagios::commands (
   $perfdata_perl   = $nagios::params::perfdata_perl,
   $perfdata_spool  = $nagios::params::perfdata_spool,
   $commands_dir    = $nagios::params::commands_dir,
+  $nagios_logdir   = $nagios::params::nagios_logdir,
   $home_dir        = $nagios::params::home_dir,
 
   ) inherits nagios::params {
