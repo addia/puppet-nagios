@@ -73,7 +73,6 @@ class nagios::servers (
     alias                         => 'centos7',
     display_name                  => 'Virt CentOS 7',
     address                       => '138.201.41.157',
-#   parents                       => 'sphinx.abel.de.com',
     use                           => 'generic-server,server-graph',
     hostgroups                    => 'linux-servers, linux-virtual-servers',
     contact_groups                => 'admins',
