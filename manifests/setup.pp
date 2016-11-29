@@ -11,8 +11,13 @@
 #
 class nagios::setup (
   $package_name  = $nagios::params::package_name,
+  $user          = $nagios::params::user,
+  $group         = $nagios::params::group,
   $home_dir      = $nagios::params::home_dir,
   $objects_dir   = $nagios::params::objects_dir,
+  $private_dir   = $nagios::params::private_dir,
+  $nagios_logdir = $nagios::params::nagios_logdir,
+  $nagios_cmd    = $nagios::params::nagios_cmd,
   $config_dir    = $nagios::params::config_dir
 
   ) inherits nagios::params {

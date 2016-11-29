@@ -18,6 +18,8 @@
 #     admin_passwd                     = the admin password
 #     readonly_passwd                  = the read-only password
 #     notification_email               = email address for notifications
+#     nagios_email                     = nagios sending email address
+#     pager_email                      = pager email address for notifications
 #     nagios_server                    = the server fqdn
 #     nagios_server_ip                 = the server ip
 #     purge_unmanaged                  = set to false
@@ -31,6 +33,8 @@
 #     servers_dir                      = the servers directory
 #     services_dir                     = the services directory
 #     plugin_dir                       = the plug-in location
+#     nagios_logdir                    = the log file location
+#     nagios_cmd                       = the command file location
 #     perfdata_perl                    = location of the perl modules to create performance data
 #     perfdata_spool                   = storage for performance data files
 #
@@ -58,6 +62,8 @@ class nagios (
   $admin_passwd                        = $nagios::params::admin_passwd,
   $readonly_passwd                     = $nagios::params::readonly_passwd,
   $notification_email                  = $nagios::params::notification_email,
+  $nagios_email                        = $nagios::params::nagios_email,
+  $pager_email                         = $nagios::params::pager_email,
   $nagios_server                       = $nagios::params::nagios_server,
   $nagios_server_ip                    = $nagios::params::nagios_server_ip,
   $purge_unmanaged                     = $nagios::params::purge_unmanaged,
@@ -69,6 +75,8 @@ class nagios (
   $servers_dir                         = $nagios::params::servers_dir,
   $services_dir                        = $nagios::params::services_dir,
   $plugin_dir                          = $nagios::params::plugin_dir,
+  $nagios_logdir                       = $nagios::params::nagios_logdir,
+  $nagios_cmd                          = $nagios::params::nagios_cmd,
   $perfdata_perl                       = $nagios::params::perfdata_perl,
   $perfdata_spool                      = $nagios::params::perfdata_spool,
 

@@ -19,6 +19,8 @@ class nagios::params {
   $admin_passwd         = '$apr1$Gb.grQs0$8BKaD0GmU7jmFCpWkbmr70'  # nagiosadmin
   $readonly_passwd      = '$apr1$91LBiouD$gjtlp.5IkEUbhPOyLTkie/'  # nagiosview
   $notification_email   = 'addi.abel@gmail.com'
+  $nagios_email         = 'nagios@abel.network'
+  $pager_email          = 'nagios@abel.network'
   $nagios_server        = $::fqdn
   $nagios_server_ip     = $::ipaddress
   $purge_unmanaged      = false
@@ -33,6 +35,8 @@ class nagios::params {
       $servers_dir      = "$objects_dir/servers"
       $services_dir     = "$objects_dir/services"
       $plugin_dir       = '/usr/lib/monitoring-plugins'
+      $nagios_logdir    = '/var/nagios'
+      $nagios_cmd       = "$nagios_logdir/rw"
       $perfdata_perl    = '/usr/lib/pnp4nagios'
       $perfdata_spool   = '/var/lib/pnp4nagios/spool'
       }
@@ -45,6 +49,8 @@ class nagios::params {
       $servers_dir      = "$objects_dir/servers"
       $services_dir     = "$objects_dir/services"
       $plugin_dir       = '/usr/lib64/nagios/plugins'
+      $nagios_cmd       = "$home_dir/cmd"
+      $nagios_logdir    = '/var/log/nagios'
       $perfdata_perl    = '/usr/lib/pnp4nagios'
       $perfdata_spool   = '/var/lib/pnp4nagios/spool'
       }
