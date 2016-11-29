@@ -25,15 +25,8 @@ class nagios::commands (
   nagios_command { 'check_host_alive':
     ensure         => 'present',
     mode           => '644',
-    target         => "${commands_dir}/check_ping.cfg",
-    command_line   => '$USER1$/check_ping -H \'$HOSTADDRESS$\' -w 3000.0,80% -c 5000.0,100% -p 5'
-    }
-
-  nagios_command { 'check_ping':
-    ensure         => 'present',
-    mode           => '644',
-    target         => "${commands_dir}/check_ping.cfg",
-    command_line   => '$USER1$/check_ping -H \'$HOSTADDRESS$\' -w \'$ARG1$\' -c \'$ARG2$\' -p 5'
+    target         => "${commands_dir}/check_ssh.cfg",
+    command_line   => '$USER1$/check_ssh \'$HOSTADDRESS$\''
     }
 
   nagios_command { 'check_cpu':

@@ -114,17 +114,6 @@ class nagios::services (
     check_command                 => 'check_net_stat!eth0',
     }
 
-  nagios_service { 'service-ping':
-    ensure                        => 'present',
-    mode                          => '644',
-    target                        => "${services_dir}/service_ping.cfg",
-    service_description           => 'Server Ping',
-    use                           => 'generic-service,service-graph',
-    hostgroup_name                => 'linux-servers',
-    servicegroups                 => 'all-services',
-    check_command                 => 'check_ping!100.0,20%!500.0,60%',
-    }
-
   nagios_service { 'service-proc_total':
     ensure                        => 'present',
     mode                          => '644',
