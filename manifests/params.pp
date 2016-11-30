@@ -38,7 +38,9 @@ class nagios::params {
       $nagios_logdir    = '/var/nagios'
       $nagios_cmd       = "$nagios_logdir/rw"
       $perfdata_perl    = '/usr/lib/pnp4nagios'
-      $perfdata_spool   = '/var/lib/pnp4nagios/spool'
+      $perfdata_dir     = '/var/lib/pnp4nagios'
+      $perfdata_spool   = "$perfdata_dir/spool"
+      $perfdata_base    = "$perfdata_dir/perfdata"
       }
     'RedHat': {
       $home_dir         = '/var/spool/nagios'
@@ -49,10 +51,13 @@ class nagios::params {
       $servers_dir      = "$objects_dir/servers"
       $services_dir     = "$objects_dir/services"
       $plugin_dir       = '/usr/lib64/nagios/plugins'
-      $nagios_cmd       = "$home_dir/cmd"
       $nagios_logdir    = '/var/log/nagios'
-      $perfdata_perl    = '/usr/lib/pnp4nagios'
-      $perfdata_spool   = '/var/lib/pnp4nagios/spool'
+      $nagios_cmd       = "$home_dir/cmd"
+      $perfdata_perl    = '/usr/libexec/pnp4nagios'
+      $perfdata_spool   = '/var/spool/pnp4nagios'
+      $perfdata_dir     = '/var/lib/pnp4nagios'
+      $perfdata_log     = '/var/log/pnp4nagios'
+      $perfdata_base    = "$perfdata_dir/perfdata.dump"
       }
     }
   }

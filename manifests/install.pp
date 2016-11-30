@@ -27,13 +27,13 @@ class nagios::install (
 
   case $::osfamily {
     'RedHat': {
-      $packages    = ['nagios','pnp4nagios','nginx','php-fpm','fcgi-devel','spawn-fcgi']
+      $packages    = ['nagios','pnp4nagios','php-fpm','fcgi-devel','spawn-fcgi']
       }
     'Debian': {
-      $packages    = ['nagios','pnp4nagios','nginx','php5-fpm','apache2-utils','build-essential','spawn-fcgi','fcgiwrap']
+      $packages    = ['nagios','pnp4nagios','php5-fpm','apache2-utils','build-essential','spawn-fcgi','fcgiwrap']
       }
     'Archlinux': {
-      $packages    = ['nagios','pnp4nagios','nginx-mainline-addons','php-fpm','fcgiwrap','spawn-fcgi']
+      $packages    = ['nagios','pnp4nagios','php-fpm','fcgiwrap','spawn-fcgi']
       }
     default: {
       fail ( "OS family ${::osfamily} not supported" )
