@@ -21,21 +21,6 @@ class nagios::service (
     enable       => true,
     }
 
-  case $::osfamily {
-    'RedHat': {
-      service { 'httpd':
-        ensure   => running,
-        enable   => true,
-        }
-      }
-    'Archlinux': {
-      service { 'nginx':
-        ensure   => running,
-        enable   => true,
-        }
-      }
-    }
-
   service { 'npcd':
     ensure       => running,
     enable       => true,
