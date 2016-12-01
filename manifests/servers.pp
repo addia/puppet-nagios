@@ -55,7 +55,7 @@ class nagios::servers (
     target                        => "${servers_dir}/host_dogmatix.cfg",
     alias                         => 'dogmatix',
     display_name                  => 'dogmatix',
-    address                       => '86.159.215.48',
+    address                       => '86.190.143.205',
     use                           => 'generic-server,server-graph',
     hostgroups                    => 'linux-servers',
     contact_groups                => 'admins',
