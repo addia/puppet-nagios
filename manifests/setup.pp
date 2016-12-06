@@ -91,14 +91,14 @@ class nagios::setup (
     }
 
   class { 'phpfpm':
-    poold_purge => true,
+    poold_purge  => true,
     }
 
   # Pool running as a different user
   phpfpm::pool { 'nagios':
-      listen => '127.0.0.1:9009',
-      user   => 'nginx',
-      group  => 'nginx',
+    listen       => '127.0.0.1:9009',
+    user         => 'nginx',
+    group        => 'nginx',
     }
   }
 
