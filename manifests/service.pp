@@ -26,11 +26,6 @@ class nagios::service (
     enable       => true,
     }
 
-  service { 'php-fpm':
-    ensure       => running,
-    enable       => true,
-    }
-
   }
 
 
