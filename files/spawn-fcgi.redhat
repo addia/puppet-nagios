@@ -1,7 +1,7 @@
 #
 ## RedHat config for fast-fcgi 
 ##
-## either via localhost:9090   or   via unix:socket  (preferred: socket)
+## either via localhost:9090   or   via unix:socket
 ##
 ## see:  https://www.grigorov.info/nagios-with-nginx-on-centos   and others ...
 #
@@ -11,5 +11,5 @@ FCGI_PROGRAM=/usr/local/sbin/fcgiwrap
 FCGI_USER=nginx
 FCGI_GROUP=nginx
 FCGI_EXTRA_OPTIONS="-M 0700"
-# OPTIONS="-u $FCGI_USER -g $FCGI_GROUP -a 127.0.0.1 -p 9090 -S $FCGI_EXTRA_OPTIONS -F 1 -P /var/run/spawn-fcgi.pid -- $FCGI_PROGRAM"
-OPTIONS="-u $FCGI_USER -g $FCGI_GROUP -s $FCGI_SOCKET -S $FCGI_EXTRA_OPTIONS -F 1 -P /var/run/spawn-fcgi.pid -- $FCGI_PROGRAM"
+OPTIONS="-u $FCGI_USER -g $FCGI_GROUP -a 127.0.0.1 -p 9090 -S $FCGI_EXTRA_OPTIONS -F 1 -P /var/run/spawn-fcgi.pid -- $FCGI_PROGRAM"
+# OPTIONS="-u $FCGI_USER -g $FCGI_GROUP -s $FCGI_SOCKET -S $FCGI_EXTRA_OPTIONS -F 1 -P /var/run/spawn-fcgi.pid -- $FCGI_PROGRAM"
