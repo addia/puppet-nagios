@@ -26,6 +26,11 @@ class nagios::service (
     enable       => true,
     }
 
+  service { 'fcgiwrap':
+    ensure       => running,
+    enable       => true,
+    }
+
   }
 
 
