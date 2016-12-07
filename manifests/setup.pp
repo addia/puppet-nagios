@@ -101,12 +101,12 @@ class nagios::setup (
     group        => 'nginx',
     }
 
+  # allow nginx access php execmem
   case $::osfamily {
     'RedHat': {
-      # allow nginx access php execmem
       selinux::module { 'rabbitmq':
-        ensure                 => 'present',
-        source                 => 'puppet:///modules/nagios/nginx.te'
+        ensure   => 'present',
+        source   => 'puppet:///modules/nagios/nginx.te'
         }
       }
     }
