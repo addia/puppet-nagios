@@ -43,6 +43,44 @@ class nagios::install (
     ensure         => 'latest',
     }
 
+  # install fast-cgi stuff ...
+  case $::osfamily {
+    'RedHat': { 
+      file { '/usr/local/sbin/fcgiwrap':
+        ensure  => 'present',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0755',
+        source  => "puppet:///modules/nagios/fcgiwrap",
+      } 
+      file { '/etc/sysconfig/spawn-fcgi':
+        ensure  => 'present',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0755',
+        replace => true,
+        source  => "puppet:///modules/nagios/spawn-fcgi.redhat",
+      } 
+      file { '/usr/lib/systemd/system/fcgiwrap.service.redhat':
+        ensure  => 'present',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0755',
+        source  => "puppet:///modules/nagios/fcgiwrap.service.redhat",
+      } 
+      file { '/usr/lib/systemd/system/fcgiwrap.socket.redhat':
+        ensure  => 'present',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0755',
+        source  => "puppet:///modules/nagios/fcgiwrap.socket.redhat",
+      }
+    }
+    default: {
+      fail ( "OS family ${::osfamily} not supported" )
+    }
+  }
+
   # create the objects directories
   notify { "## --->>> creating config directories for ${package_name}": }
 

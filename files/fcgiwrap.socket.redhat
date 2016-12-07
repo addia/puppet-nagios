@@ -1,0 +1,9 @@
+[Unit]
+Description=fcgiwrap Socket
+
+[Socket]
+ListenStream=/var/run/fcgiwrap.sock
+
+[Install]
+WantedBy=sockets.target
+

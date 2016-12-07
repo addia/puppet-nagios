@@ -1,0 +1,16 @@
+[Unit]
+Description=Simple CGI Server
+Requires=fcgiwrap.socket
+After=nss-user-lookup.target
+
+[Service]
+EnvironmentFile=/etc/sysconfig/spawn-fcgi
+ExecStartPre=/bin/rm -f /var/run/fcgiwrap.sock
+ExecStart=/usr/bin/spawn-fcgi ${OPTIONS}
+ExecStartPost=/usr/bin/chmod 660 /var/run/fcgiwrap.sock
+PrivateTmp=true
+Restart=on-failure
+
+[Install]
+Also=fcgiwrap.socket
+WantedBy=multi-user.target
