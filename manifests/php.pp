@@ -12,7 +12,7 @@
 class nagios::php (
   $package_name  = $nagios::params::package_name,
 
-  ) inherits nagios::php {
+  ) inherits nagios::params {
 
   notify { "## --->>> Updating the nagios php files for: ${package_name}": }
 
