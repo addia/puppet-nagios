@@ -20,7 +20,7 @@ class nagios::php (
   php::ini { '/etc/php.ini':
     display_errors => 'On',
     memory_limit   => '256M',
-    dater_timezone => 'UTC',
+    date_timezone  => 'UTC',
     }  
 
   php::fpm::conf { 'www':
