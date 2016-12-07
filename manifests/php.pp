@@ -28,7 +28,7 @@ class nagios::php (
     }
 
   php::fpm::conf { 'nagios':
-    listen         => '127.0.0.1:9001',
+    listen         => '127.0.0.1:9009',
     user           => 'nginx',
     group          => 'nginx',
     error_log      => '/var/log/phpfpm.log',
