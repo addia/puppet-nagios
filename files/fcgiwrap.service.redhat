@@ -1,15 +1,11 @@
 [Unit]
 Description=Simple CGI Server
-Requires=fcgiwrap.socket
 After=nss-user-lookup.target
 
 [Service]
-ExecStartPre=/bin/rm -f /var/run/fcgiwrap.sock
 ExecStart=/usr/bin/spawn-fcgi -u nginx -g nginx -a 127.0.0.1 -p 9090 -n -P /var/run/spawn-fcgi.pid -- /usr/local/sbin/multiwatch -f 5 -- /usr/local/sbin/fcgiwrap
-#ExecStartPost=/usr/bin/chmod 660 /var/run/fcgiwrap.sock
 PrivateTmp=true
 Restart=on-failure
 
 [Install]
-Also=fcgiwrap.socket
 WantedBy=multi-user.target

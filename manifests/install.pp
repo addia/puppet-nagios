@@ -68,19 +68,9 @@ class nagios::install (
         replace => true,
         source  => "puppet:///modules/nagios/spawn-fcgi.redhat",
       } 
-      #file { '/usr/lib/systemd/system/fcgiwrap.socket':
-      #  ensure  => 'present',
-      #  owner   => 'root',
-      #  group   => 'root',
-      #  mode    => '0755',
-      #  source  => "puppet:///modules/nagios/fcgiwrap.socket.redhat",
-      #}
       # put the service files for fcgi in place:
       systemd::unit_file { 'fcgiwrap.service':
         source  => "puppet:///modules/nagios/fcgiwrap.service.redhat",
-      }
-      systemd::unit_file { 'fcgiwrap.socket':
-        source  => "puppet:///modules/nagios/fcgiwrap.socket.redhat",
       }
     }
   }
