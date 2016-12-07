@@ -16,6 +16,14 @@ class nagios::php (
 
   notify { "## --->>> Updating the nagios php files for: ${package_name}": }
 
+  # directory for log files
+  file { '/var/log/php-fpm':
+    ensure       => 'directory',
+    owner        => 'nginx',
+    group        => 'nginx',
+    mode         => '0755',
+    }
+
   # put the php config file for nagios in place:
   php::ini { '/etc/php.ini':
     display_errors => 'On',
@@ -31,7 +39,7 @@ class nagios::php (
     listen         => '127.0.0.1:9009',
     user           => 'nginx',
     group          => 'nginx',
-    error_log      => '/var/log/phpfpm.log',
+    error_log      => '/var/log/php-fpm/phpfpm.log',
     require        => Package['nginx'],
     }
 
