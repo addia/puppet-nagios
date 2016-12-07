@@ -41,6 +41,13 @@ class nagios::accounts (
     mode            => 640,
     }
 
+  # allow nginx to read nagios files
+  exec {"allow nginx access to nagios":
+    unless          => "/bin/grep nagios /etc/group | /bin/cut -d: -f4 | /bin/grep -q nginx",
+    command         => "/bin/gpasswd -a nginx nagios",
+    require         => Package['nginx'],
+    }
+
   }
 
 
