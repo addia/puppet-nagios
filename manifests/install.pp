@@ -27,7 +27,7 @@ class nagios::install (
 
   case $::osfamily {
     'RedHat': {
-      $packages    = ['nagios','pnp4nagios','fcgi-devel','spawn-fcgi']
+      $packages    = ['nagios','pnp4nagios','fcgi-devel','spawn-fcgi','libev']
       }
     'Debian': {
       $packages    = ['nagios','pnp4nagios','apache2-utils','build-essential','spawn-fcgi','fcgiwrap']
@@ -52,6 +52,13 @@ class nagios::install (
         group   => 'root',
         mode    => '0755',
         source  => "puppet:///modules/nagios/fcgiwrap",
+      } 
+      file { '/usr/local/sbin/multiwatch':
+        ensure  => 'present',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0755',
+        source  => "puppet:///modules/nagios/multiwatch",
       } 
       file { '/etc/sysconfig/spawn-fcgi':
         ensure  => 'present',
