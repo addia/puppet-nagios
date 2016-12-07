@@ -31,7 +31,6 @@ class nagios::php (
     listen         => '127.0.0.1:9001',
     user           => 'nginx',
     group          => 'nginx',
-    log_level      => 'warning',
     error_log      => '/var/log/phpfpm.log',
     require        => User['nginx'],
     }
