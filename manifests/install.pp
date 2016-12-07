@@ -76,9 +76,6 @@ class nagios::install (
         source  => "puppet:///modules/nagios/fcgiwrap.socket.redhat",
       }
     }
-    default: {
-      fail ( "OS family ${::osfamily} not supported" )
-    }
   }
 
   # create the objects directories
