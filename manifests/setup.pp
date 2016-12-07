@@ -90,26 +90,6 @@ class nagios::setup (
     match        => '^authorized_for_all_hosts=',
     }
 
-  class { 'phpfpm':
-    poold_purge  => true,
-    }
-
-  # Pool running as a different user
-  phpfpm::pool { 'nagios':
-    listen       => '127.0.0.1:9009',
-    user         => 'nginx',
-    group        => 'nginx',
-    }
-
-  # allow nginx access php execmem
-  case $::osfamily {
-    'RedHat': {
-      selinux::module { 'rabbitmq':
-        ensure   => 'present',
-        source   => 'puppet:///modules/nagios/nginx.te'
-        }
-      }
-    }
   }
 
 
