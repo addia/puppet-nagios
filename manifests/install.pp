@@ -72,6 +72,16 @@ class nagios::install (
       systemd::unit_file { 'fcgiwrap.service':
         source  => "puppet:///modules/nagios/fcgiwrap.service.redhat",
       }
+      selinux::port { 'allow_nginx_php':
+        context                => 'httpd_t',
+        port                   => 9009,
+        protocol               => 'tcp',
+      }
+      selinux::port { 'allow_nginx_fcgi':
+        context                => 'httpd_t',
+        port                   => 9090,
+        protocol               => 'tcp',
+      }
     }
   }
 
