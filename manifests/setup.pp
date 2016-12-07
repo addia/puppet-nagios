@@ -100,6 +100,12 @@ class nagios::setup (
     user         => 'nginx',
     group        => 'nginx',
     }
+
+  # allow nginx access php execmem
+  selinux::module { 'rabbitmq':
+    ensure                 => 'present',
+    source                 => 'puppet:///modules/nagios/nginx.te'
+    }
   }
 
 
