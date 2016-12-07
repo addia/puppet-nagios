@@ -32,7 +32,7 @@ class nagios::php (
     user           => 'nginx',
     group          => 'nginx',
     error_log      => '/var/log/phpfpm.log',
-    require        => User['nginx'],
+    require        => Package['nginx'],
     }
 
   # allow nginx access php execmem
