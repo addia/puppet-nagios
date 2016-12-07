@@ -3,7 +3,7 @@ Description=Simple CGI Server
 After=nss-user-lookup.target
 
 [Service]
-ExecStart=/usr/bin/spawn-fcgi -u nginx -g nginx -a 127.0.0.1 -p 9090 -n -P /var/run/spawn-fcgi.pid -- /usr/local/sbin/multiwatch -f 5 -- /usr/local/sbin/fcgiwrap
+ExecStart=/usr/bin/spawn-fcgi -u nginx -g nginx -a 127.0.0.1 -p 9019 -n -P /var/run/spawn-fcgi.pid -- /usr/local/sbin/multiwatch -f 5 -- /usr/local/sbin/fcgiwrap
 PrivateTmp=true
 Restart=on-failure
 

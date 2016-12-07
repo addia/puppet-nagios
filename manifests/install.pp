@@ -79,7 +79,7 @@ class nagios::install (
       }
       selinux::port { 'allow_nginx_fcgi':
         context                => 'http_port_t',
-        port                   => 9090,
+        port                   => 9019,
         protocol               => 'tcp',
       }
     }
