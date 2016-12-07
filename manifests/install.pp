@@ -27,7 +27,7 @@ class nagios::install (
 
   case $::osfamily {
     'RedHat': {
-      $packages    = ['nagios','pnp4nagios','php-fpm','fcgi-devel','spawn-fcgi','libev']
+      $packages    = ['nagios','pnp4nagios','php-fpm','php-pear','fcgi-devel','spawn-fcgi','libev']
       }
     'Debian': {
       $packages    = ['nagios','pnp4nagios','apache2-utils','build-essential','spawn-fcgi','fcgiwrap']

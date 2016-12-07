@@ -25,11 +25,19 @@ class nagios::setup (
 
   notify { "## --->>> Updating the nagios config files for: ${package_name}": }
 
+  # ensure the run directory is there
   file { '/var/run/nagios':
     ensure       => 'directory',
     owner        => $user,
     group        => $group,
     mode         => '0755',
+    }
+  # fix the permission on a config file
+  file { '/usr/share/nagios/html/config.inc.php':
+    ensure       => 'present',
+    owner        => 'root',
+    group        => 'root',
+    mode         => '0644',
     }
 
   # put the main config file for nagios in place:
