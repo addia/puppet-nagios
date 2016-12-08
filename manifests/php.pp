@@ -40,6 +40,8 @@ class nagios::php (
     'RedHat': {
       php::fpm::conf { 'nagios':
         listen         => '127.0.0.1:9009',
+        user           => 'nginx',
+        group_final    => 'nginx',
         listen_owner   => 'nginx',
         listen_group   => 'nginx',
         error_log      => '/var/log/php-fpm/phpfpm.log',
@@ -57,6 +59,8 @@ class nagios::php (
     'Archlinux': {
       php::fpm::conf { 'nagios':
         listen         => '/run/php-fpm/nagios.sock',
+        user           => 'nginx',
+        group_final    => 'nginx',
         listen_owner   => 'nginx',
         listen_group   => 'nginx',
         error_log      => '/var/log/php-fpm/phpfpm.log',
