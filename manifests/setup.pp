@@ -20,7 +20,7 @@ class nagios::setup (
   $nagios_cmd    = $nagios::params::nagios_cmd,
   $plugin_dir    = $nagios::params::plugin_dir,
   $config_dir    = $nagios::params::config_dir,
-  $www_base_dir  = $nagios::params::www_base_dir,
+  $doc_root_dir  = $nagios::params::doc_root_dir,
 
   ) inherits nagios::params {
 
