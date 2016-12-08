@@ -25,7 +25,7 @@
 #     nagios_server                    = the server fqdn
 #     nagios_server_ip                 = the server ip
 #     purge_unmanaged                  = set to false
-#     cgi_base_url                     = web server location
+#     cgi_base_url                     = web server location    *** there has to be a "/" as the last character !!! ***
 #
 #   The next variables as distribution dependent:
 #     home_dir                         = nagios home directory
