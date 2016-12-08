@@ -43,12 +43,16 @@ class nagios::php (
     require        => Package['nginx'],
     }
 
-  # allow nginx access php execmem
+  # allow nginx and nrpe access to system resources
   case $::osfamily {
     'RedHat': {
       selinux::module { 'nginx_local':
         ensure   => 'present',
         source   => 'puppet:///modules/nagios/nginx.te'
+        }
+      selinux::module { 'nrpe_local':
+        ensure   => 'present',
+        source   => 'puppet:///modules/nagios/nrpe.te'
         }
       }
     }
