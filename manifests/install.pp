@@ -33,7 +33,7 @@ class nagios::install (
       $packages    = ['nagios','pnp4nagios','apache2-utils','build-essential','spawn-fcgi','fcgiwrap']
       }
     'Archlinux': {
-      $packages    = ['nagios','pnp4nagios','fcgiwrap','spawn-fcgi']
+      $packages    = ['nagios','pnp4nagios','fcgiwrap','spawn-fcgi','php-fpm']
       }
     default: {
       fail ( "OS family ${::osfamily} not supported" )
