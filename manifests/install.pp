@@ -66,11 +66,11 @@ class nagios::install (
         group   => 'root',
         mode    => '0755',
         replace => true,
-        source  => "puppet:///modules/nagios/spawn-fcgi.redhat",
+        source  => "puppet:///modules/nagios/spawn-fcgi.rpm",
       } 
       # put the service files for fcgi in place:
       systemd::unit_file { 'fcgiwrap.service':
-        source  => "puppet:///modules/nagios/fcgiwrap.service.redhat",
+        source  => "puppet:///modules/nagios/fcgiwrap.service.rpm",
       }
       selinux::port { 'allow_nginx_php':
         context                => 'http_port_t',
@@ -81,6 +81,12 @@ class nagios::install (
         context                => 'http_port_t',
         port                   => 9019,
         protocol               => 'tcp',
+      }
+    }
+    'Archlinux': {
+      # put the service files for fcgi in place:
+      systemd::unit_file { 'fcgiwrap.service':
+        source  => "puppet:///modules/nagios/fcgiwrap.service.pkg",
       }
     }
   }
