@@ -19,7 +19,8 @@ class nagios::setup (
   $nagios_logdir = $nagios::params::nagios_logdir,
   $nagios_cmd    = $nagios::params::nagios_cmd,
   $plugin_dir    = $nagios::params::plugin_dir,
-  $config_dir    = $nagios::params::config_dir
+  $config_dir    = $nagios::params::config_dir,
+  $www_base_dir  = $nagios::params::www_base_dir,
 
   ) inherits nagios::params {
 
@@ -52,6 +53,18 @@ class nagios::setup (
     notify       => Service['nagios']
     }
 
+  # put the cgi config file for nagios in place:
+  file { "${config_dir}/cgi.cfg":
+    ensure       => 'file',
+    path         => "${config_dir}/cgi.cfg",
+    owner        => 'root',
+    group        => 'root',
+    mode         => '0664',
+    replace      => true,
+    content      => template('nagios/cgi.cfg.erb'),
+    notify       => Service['nagios']
+    }
+
   # put the secrets file for nagios in place:
   file { "${private_dir}/resource.cfg":
     ensure       => 'file',
@@ -72,30 +85,12 @@ class nagios::setup (
     group        => 'root',
     mode         => '0644',
     replace      => true,
-    content      => template('nagios/nagios.conf.erb'),
-    notify       => Service['nagios']
+    content      => template('nagios/nagios.conf.erb')
     }
 
   # put the service file for nagios in place:
   systemd::unit_file { 'nagios.service':
     content      => template('nagios/nagios.service.erb'),
-    }
-
-  notify { "## --->>> Updating the cgi config files for: ${package_name}": }
-
-  # add another user to the /etc/nagios/cgi.cfg config.
-  file_line { 'cgi.conf-1':
-    ensure       => 'present',
-    path         => "${config_dir}/cgi.cfg",
-    line         => 'authorized_for_all_services=nagiosadmin,nagiosview',
-    match        => '^authorized_for_all_services=',
-    }
-
-  file_line { 'cgi.conf-2':
-    ensure       => 'present',
-    path         => "${config_dir}/cgi.cfg",
-    line         => 'authorized_for_all_hosts=nagiosadmin,nagiosview',
-    match        => '^authorized_for_all_hosts=',
     }
 
   }

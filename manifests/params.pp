@@ -41,6 +41,7 @@ class nagios::params {
       $perfdata_dir     = '/var/lib/pnp4nagios'
       $perfdata_spool   = "$perfdata_dir/spool"
       $perfdata_base    = "$perfdata_dir/perfdata"
+      $www_base_dir     = "/usr/share/nagios/share"
       }
     'RedHat': {
       $home_dir         = '/var/spool/nagios'
@@ -58,6 +59,7 @@ class nagios::params {
       $perfdata_dir     = '/var/lib/pnp4nagios'
       $perfdata_log     = '/var/log/pnp4nagios'
       $perfdata_base    = "$perfdata_dir/perfdata.dump"
+      $www_base_dir     = "/usr/share/nagios/html"
       }
     }
   }

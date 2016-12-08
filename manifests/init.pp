@@ -37,6 +37,7 @@
 #     nagios_cmd                       = the command file location
 #     perfdata_perl                    = location of the perl modules to create performance data
 #     perfdata_spool                   = storage for performance data files
+#     www_base_dir                     = document root directory
 #
 # ===========================
 #
@@ -79,6 +80,7 @@ class nagios (
   $nagios_cmd                          = $nagios::params::nagios_cmd,
   $perfdata_perl                       = $nagios::params::perfdata_perl,
   $perfdata_spool                      = $nagios::params::perfdata_spool,
+  $www_base_dir                        = $nagios::params::www_base_dir,
 
   ) inherits nagios::params {
 
