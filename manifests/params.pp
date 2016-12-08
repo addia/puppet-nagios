@@ -16,14 +16,17 @@ class nagios::params {
   $group                = 'nagios'
   $userid               = '240'
   $grpuid               = '240'
-  $admin_passwd         = '$apr1$Gb.grQs0$8BKaD0GmU7jmFCpWkbmr70'  # nagiosadmin
-  $readonly_passwd      = '$apr1$91LBiouD$gjtlp.5IkEUbhPOyLTkie/'  # nagiosview
+  $admin_user           = 'nagiosadmin'
+  $readonly_user        = 'nagiosview'
+  $admin_passwd         = '$apr1$Gb.grQs0$8BKaD0GmU7jmFCpWkbmr70'
+  $readonly_passwd      = '$apr1$91LBiouD$gjtlp.5IkEUbhPOyLTkie/'
   $notification_email   = 'addi.abel@gmail.com'
   $nagios_email         = 'nagios@abel.network'
   $pager_email          = 'nagios@abel.network'
   $nagios_server        = $::fqdn
   $nagios_server_ip     = $::ipaddress
   $purge_unmanaged      = false
+  $cgi_base_url         = '/'
 
   case $::osfamily {
     'ArchLinux': {

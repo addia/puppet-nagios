@@ -13,6 +13,9 @@ class nagios::setup (
   $package_name  = $nagios::params::package_name,
   $user          = $nagios::params::user,
   $group         = $nagios::params::group,
+  $admin_user    = $nagios::params::admin_user,
+  $readonly_user = $nagios::params::readonly_user,
+  $cgi_base_url  = $nagios::params::cgi_base_url,
   $home_dir      = $nagios::params::home_dir,
   $objects_dir   = $nagios::params::objects_dir,
   $private_dir   = $nagios::params::private_dir,
@@ -33,13 +36,6 @@ class nagios::setup (
     group        => $group,
     mode         => '0755',
     }
-  # fix the permission on a config file
-  file { '/usr/share/nagios/html/config.inc.php':
-    ensure       => 'present',
-    owner        => 'root',
-    group        => 'root',
-    mode         => '0644',
-    }
 
   # put the main config file for nagios in place:
   file { "${config_dir}/nagios.cfg":
@@ -50,6 +46,18 @@ class nagios::setup (
     mode         => '0664',
     replace      => true,
     content      => template('nagios/nagios.cfg.erb'),
+    notify       => Service['nagios']
+    }
+
+  # put the php config file for nagios in place:
+  file { "${doc_root_dir}/config.inc.php":
+    ensure       => 'file',
+    path         => "${doc_root_dir}/config.inc.php",
+    owner        => 'root',
+    group        => 'root',
+    mode         => '0644',
+    replace      => true,
+    content      => template('nagios/config.inc.php.erb'),
     notify       => Service['nagios']
     }
 

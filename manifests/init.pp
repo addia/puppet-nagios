@@ -15,6 +15,8 @@
 #     group                            = run as group
 #     userid                           = default uid
 #     grpuid                           = default gid
+#     admin_user                       = the admin user
+#     readonly_user                    = the read-only user
 #     admin_passwd                     = the admin password
 #     readonly_passwd                  = the read-only password
 #     notification_email               = email address for notifications
@@ -23,6 +25,7 @@
 #     nagios_server                    = the server fqdn
 #     nagios_server_ip                 = the server ip
 #     purge_unmanaged                  = set to false
+#     cgi_base_url                     = web server location
 #
 #   The next variables as distribution dependent:
 #     home_dir                         = nagios home directory
@@ -60,6 +63,8 @@ class nagios (
   $group                               = $nagios::params::group,
   $userid                              = $nagios::params::userid,
   $grpuid                              = $nagios::params::grpuid,
+  $admin_user                          = $nagios::params::admin_user,
+  $readonly_user                       = $nagios::params::readonly_user,
   $admin_passwd                        = $nagios::params::admin_passwd,
   $readonly_passwd                     = $nagios::params::readonly_passwd,
   $notification_email                  = $nagios::params::notification_email,
@@ -68,6 +73,7 @@ class nagios (
   $nagios_server                       = $nagios::params::nagios_server,
   $nagios_server_ip                    = $nagios::params::nagios_server_ip,
   $purge_unmanaged                     = $nagios::params::purge_unmanaged,
+  $cgi_base_url                        = $nagios::params::cgi_base_url,
   $home_dir                            = $nagios::params::home_dir,
   $config_dir                          = $nagios::params::config_dir,
   $private_dir                         = $nagios::params::private_dir,
