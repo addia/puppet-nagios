@@ -100,10 +100,10 @@ class nagios (
     class { '::nagios::php': } ->
     class { '::nagios::commands': } ->
     class { '::nagios::contacts': } ->
+    class { '::nagios::housekeep': } ->
     class { '::nagios::servers': } ->
     class { '::nagios::services': } ->
     class { '::nagios::service': } ->
-    class { '::nagios::housekeep': } ->
     anchor { 'nagios::end': }
 
   }
