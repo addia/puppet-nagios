@@ -98,6 +98,7 @@ class nagios (
     class { '::nagios::accounts': } ->
     class { '::nagios::setup': } ->
     class { '::nagios::php': } ->
+    class { '::nagios::nginx': } ->
     class { '::nagios::commands': } ->
     class { '::nagios::contacts': } ->
     class { '::nagios::housekeep': } ->
