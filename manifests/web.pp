@@ -1,4 +1,4 @@
-# == Class nagios::nginx
+# == Class nagios::web
 # ===========================
 #
 #
@@ -9,7 +9,7 @@
 #
 # ===========================
 #
-class nagios::nginx (
+class nagios::web (
   $package_name  = $nagios::params::package_name,
 
   ) inherits nagios::params {
